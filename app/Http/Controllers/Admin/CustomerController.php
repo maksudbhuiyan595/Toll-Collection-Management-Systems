@@ -4,26 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function index(){
-        $customer=Customer::all();
+        $customer=Customer::with('customerData')->paginate(10);
         return view('backend.admin.pages.customers.customerIndex', Compact('customer'));
     }
 
     public function create(){
-        return view('backend.admin.pages.customers.customerCreate');
+        $names=Vehicle::all();
+        return view('backend.admin.pages.customers.customerCreate',compact('names'));
+       
     }
 
-    public function store(Request $request){
+        public function store(Request $request){
         //dd($request);
        $request->validate([
             'customer_name'         =>'required',
-            'vehicle_name'          => 'required',
-            'vehicle_plade_name'    => 'required',
-            'vehicle_plade_number'  => 'required|min:4|max:10',
+            'vehicle_id'            => 'required',
             'driving_licence'       =>'required',
             'customer_phone'        => 'required|max:13',
             'customer_address'      => 'required'
@@ -31,9 +32,7 @@ class CustomerController extends Controller
       
         Customer::create([
             'customer_name'          =>$request->customer_name,
-            'vehicle_name'           =>$request->vehicle_name,
-            'vehicle_plade_name'     =>$request->vehicle_plade_name,
-            'vehicle_plade_number'   =>$request->vehicle_plade_number,
+            'vehicle_id'           =>$request->vehicle_id,
             'driving_licence'        =>$request->driving_licence,
             'customer_phone'         =>$request->customer_phone,
             'customer_address'       =>$request->customer_address
@@ -41,5 +40,5 @@ class CustomerController extends Controller
 
         return redirect()->route('customer.index')->with('message','customer Successfully Created.');
 
-    }
+    } 
 }

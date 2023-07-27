@@ -2,8 +2,9 @@
 
 @section('content')
 
-<h1 class="mt-4">Vehicles</h1>
-<a class="btn btn-primary" href="{{route('vehicle.create')}}">Create</a>
+
+<h1 class="mt-4 text-center"><strong>Toll Collection Vehicle Lists</strong></h1>
+<a class="btn btn-outline-primary" href="{{route('vehicle.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
   <thead>
@@ -19,7 +20,7 @@
   </thead>
   <tbody>
     
-    @foreach ($vehicle as $value)
+    @foreach ($vehicles as $value)
     
     <tr>
       <th scope="row">{{$value->id}}</th>
@@ -32,13 +33,13 @@
                     height:60px;"
          src="{{url('/uploads/categories/'.$value->vehicleData->category_image)}}" alt="image">
       <td>
-        <a class="btn btn-info" href="">edit</a>
-        <a class="btn btn-danger" href="">delete</a>
+        <a class="btn btn-warning text-white" href="{{Route('vehicle.edit',$value->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{Route('vehicle.destroy',$value->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach
   </tbody>
 </table>
    
-{{ $vehicle->links()}}
+{{ $vehicles->links()}}
 @endsection

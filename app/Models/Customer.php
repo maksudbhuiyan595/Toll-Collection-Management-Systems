@@ -9,4 +9,8 @@ class Customer extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    
+    public function customerData(){
+        return $this->belongsTo(Vehicle::class,'vehicle_id','id');
+    }
 }

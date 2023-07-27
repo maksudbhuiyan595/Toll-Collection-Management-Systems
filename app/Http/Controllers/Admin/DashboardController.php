@@ -10,4 +10,8 @@ class DashboardController extends Controller
     public function index(){
         return view('backend.admin.pages.dashboard');
     }
+  /*   public function search(Request $request)
+    {
+        dd($request->all());
+    } */
 }

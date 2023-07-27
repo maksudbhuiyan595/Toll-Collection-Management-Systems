@@ -13,15 +13,11 @@ return new class extends Migration
     {
         Schema::create('tolls', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name',100);
-            $table->string('vehicle_name',100);
-            $table->string('vehicle_plade_name',100)->nullable();
-            $table->string('vehicle_plade_number');
-            $table->string('driving_licence');
-            $table->integer('customer_phone');
-            $table->text('customer_address');
-            $table->integer('toll');
-            $table->string('vehicle_image');
+            $table->string('toll_name');
+            $table->integer('gate_number');
+            $table->integer('road_line');
+            $table->foreignId('toll_category_id')->constrained('toll_chats')->restrictOnDelete();
+            $table->foreignId('toll_chart_id')->constrained('toll_chats')->restrictOnDelete();
             $table->timestamps();
         });
     }

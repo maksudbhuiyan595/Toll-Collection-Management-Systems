@@ -8,7 +8,7 @@
       </div>
   @endif
 
-<form action="{{route('customer.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('customer.store')}}" method="post">
 
   @if($errors->any())
     @foreach($errors->all() as $err)
@@ -24,15 +24,12 @@
   </div>
   <div class="mb-3">
     <label class="form-label">Vehicle Name</label>
-    <input type="text" class="form-control"name="vehicle_name">
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Vehicle Plade Name</label>
-    <input type="text" class="form-control"name="vehicle_plade_name">
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Vehicle Plade Number</label>
-    <input type="text" class="form-control"name="vehicle_plade_number">
+    <select class="form-control" name="vehicle_id">
+      @foreach ($names as $value )
+      <option value="{{$value->id}}">{{$value->vehicle_name}}</option>
+      @endforeach
+      
+    </select>
   </div>
   <div class="mb-3">
     <label class="form-label">Driving Licence</label>
@@ -46,7 +43,7 @@
     <label class="form-label">Customer Address</label>
     <input type="text" class="form-control"name="customer_address">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-lg btn-outline-success">Submit</button>
 </form>
    
 

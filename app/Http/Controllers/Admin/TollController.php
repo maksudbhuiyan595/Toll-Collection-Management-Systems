@@ -2,55 +2,67 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Toll;
+
+
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\TollChat;
+use App\Models\Toll;
 use Illuminate\Http\Request;
 
 class TollController extends Controller
 {
     public function index(){
-        $toll=Toll::all();
-        return view('backend.admin.pages.tolls.tollIndex', Compact('toll'));
+        $tollCollections=Toll::with(['tollCategory','tollChart'])->paginate(10);
+       
+        return view('backend.admin.pages.tolls.tollIndex', compact('tollCollections'));
+       
     }
-
     public function create(){
-        return view('backend.admin.pages.tolls.tollCreate');
+        $tollcats=Category::all();
+        $tollAmounts=TollChat::all();
+        return view('backend.admin.pages.tolls.tollCreate',compact('tollAmounts','tollcats'));
+        
     }
 
     public function store(Request $request){
-        //dd($request);
+        // dd($request);
        $request->validate([
-            'customer_name'         =>'required',
-            'vehicle_name'          => 'required',
-            'vehicle_plade_name'    => 'required',
-            'vehicle_plade_number'  => 'required|min:4|max:10',
-            'driving_licence'       =>'required',
-            'customer_phone'        => 'required|max:13',
-            'customer_address'      => 'required',
-            'toll'                  => 'required',
-            'vehicle_image'         => 'required'
+            'toll_name'             =>'required',
+            'gate_number'           => 'required',
+            'road_line'             => 'required',
+            'toll_category_id'      =>'required',
+            'toll_chart_id'         => 'required', 
         ]);
 
-        $fileName= null;
-        if($request->hasfile('vehicle_image')){
-            $image=$request->file('vehicle_image');
-            $fileName=date('Ymdhsi').'.'.$image->getClientOriginalExtension();
-            $image->storeAs('/tolls',$fileName);
-        }
-      
         Toll::create([
-            'customer_name'          =>$request->customer_name,
-            'vehicle_name'           =>$request->vehicle_name,
-            'vehicle_plade_name'     =>$request->vehicle_plade_name,
-            'vehicle_plade_number'   =>$request->vehicle_plade_number,
-            'driving_licence'        =>$request->driving_licence,
-            'customer_phone'         =>$request->customer_phone,
-            'customer_address'       =>$request->customer_address,
-            'toll'                   =>$request->toll,
-            'vehicle_image'          =>$fileName
+            'toll_name'             =>$request->toll_name,
+            'gate_number'           =>$request->gate_number,
+            'road_line'             =>$request->road_line,
+            'toll_category_id'      =>$request->toll_category_id,
+            'toll_chart_id'         =>$request->toll_chart_id,
+         
         ]);
 
         return redirect()->route('toll.index')->with('message','toll Successfully Created.');
 
     }
+    /* public function edit($id)
+    {
+        $data=Toll::find($id);
+        // dd($data);
+        return view('backend.admin.pages.tolls.edit',compact('data'));
+    } */
+   /*  public function update(Request $request, $id)
+    {
+        $updatedata=Toll::find($id);
+        $updatedata->update([
+            'toll_name'             =>$request->toll_name,
+            'gate_number'           =>$request->gate_number,
+            'road_line'             =>$request->road_line,
+            'toll_category_id'      =>$request->toll_category_id,
+            'toll_chart_id'         =>$request->toll_chart_id,
+        ]);
+        return redirect()->route('toll.index');
+    } */
 }

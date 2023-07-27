@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('customer_name',100);
-            $table->string('vehicle_name',100);
-            $table->string('vehicle_plade_name',100);
-            $table->string('vehicle_plade_number');
+            $table->foreignId('vehicle_id')->constrained('vehicles')->restrictOnDelete();
             $table->string('driving_licence');
             $table->integer('customer_phone');
             $table->text('customer_address');

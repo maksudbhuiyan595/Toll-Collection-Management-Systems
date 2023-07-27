@@ -1,40 +1,72 @@
-<section class="vh-100" style="background-color: #508bfc;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-            <h3 class="mb-5">Sign in</h3>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #17a2b8;
+    height: 100vh;
+  }
+  #login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }
 
-            <div class="form-outline mb-4">
-              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-              <label class="form-label" for="typeEmailX-2">Email</label>
+</style>
+
+<body>
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Login Form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+
+                @if(Session::has('message'))
+                    <p class="alert alert-info">{{ Session('message') }}</p>
+                    @endif
+                    <div id="login-box" class="col-md-12">
+
+                        <form id="login-form" class="form" action="{{route('admin.do-login')}}" method="post">
+                        @csrf
+                            @if($errors->any())
+                                @foreach ($errors->all() as $err )
+                                    <p class="alert alert-danger">{{$err}}</p>
+                                @endforeach
+
+                            @endif
+                        
+                        <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label class="text-info">Username:</label><br>
+                                <input required type="email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label  class="text-info">Password:</label><br>
+                                <input required type="password" name="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                               <!--  <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
+                                <input type="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                            <!-- <div id="register-link" class="text-right">
+                                <a href="#" class="text-info">Register here</a>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-outline mb-4">
-              <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-              <label class="form-label" for="typePasswordX-2">Password</label>
-            </div>
-
-            <!-- Checkbox -->
-            <div class="form-check d-flex justify-content-start mb-4">
-              <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-              <label class="form-check-label" for="form1Example3"> Remember password </label>
-            </div>
-
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-            <hr class="my-4">
-
-            <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-              type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
-            <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
-              type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
-
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-</section>
+</body>

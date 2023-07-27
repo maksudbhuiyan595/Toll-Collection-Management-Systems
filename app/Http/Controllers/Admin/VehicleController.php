@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class VehicleController extends Controller
 {
     public function index(){
-        $vehicle=Vehicle::with('vehicleData')->paginate(5);
+        $vehicles=Vehicle::with('vehicleData')->paginate(10);
         // dd($vehicle);
-        return view('backend.admin.pages.vehicles.vehicleIndex',compact('vehicle'));
+        return view('backend.admin.pages.vehicles.vehicleIndex',compact('vehicles'));
     }
 
     public function create(){
@@ -48,5 +48,32 @@ class VehicleController extends Controller
 
         return redirect()->route('vehicle.index')->with('message','Vehicle Successfully Created.');
 
+    }
+    public function edit($id)
+    {
+        $vehicle=Vehicle::find($id);
+        $cats=Category::all();
+        // dd($vehicle);
+        return view('backend.admin.pages.vehicles.vehicleEdit',compact('vehicle','cats'));
+    }
+    public function update(Request $request,$id)
+    {
+        $vehicle=Vehicle::find($id);
+        $vehicle->update([
+
+            'vehicle_name'      =>$request->vehicle_name, 
+            'category_id'       =>$request->category_id,
+            'plade_name'        =>$request->plade_name,
+            'plade_number'     =>$request->plade_number,
+           
+
+        ]);
+        return redirect()->back()->with('msg','update successfully');
+    }
+    public function destroy($id)
+    {
+        Vehicle::destroy($id);
+
+        return redirect()->back();
     }
 }

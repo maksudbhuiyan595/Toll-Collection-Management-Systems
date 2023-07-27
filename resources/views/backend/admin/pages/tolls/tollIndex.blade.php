@@ -2,51 +2,45 @@
 
 @section('content')
 
-<h1 class="mt-4">Tolls</h1>
-<a class="btn btn-primary" href="{{route('toll.create')}}">Create</a>
+<h1 class="mt-4 text-center">Toll Lists</h1>
+<a class="btn btn-lg btn-outline-primary" href="{{route('toll.create')}}">Create New</a>
 
 <table class="table table-hover table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Vechile Name</th>
-      <th scope="col">Plade Name</th>
-      <th scope="col">Plade Number</th>
-      <th scope="col">Diving Licence</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Address</th>
-      <th scope="col">Toll</th>
-      <th scope="col">Image</th>
-
-      <th scope='col'>Action</th>
+      <th scope="col">Toll Plaza Name</th>
+      <th scope="col">Gate Number</th>
+      <th scope="col">Line Number</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">Collection Amounts</th>
+      <th scope="col">Action</th>
+  
     </tr>
   </thead>
   <tbody>
-    @foreach($toll as $value)
+  <tbody>
+    
+    @foreach($tollCollections as $value)
+    
     <tr>
-      <th scope="row">{{$loop->iteration}}</th>
-      <td>{{$value->customer_name}}</td>
-      <td>{{$value->vehicle_name}}</td>
-      <td>{{$value->vehicle_plade_name}}</td>
-      <td>{{$value->vehicle_plade_number}}</td>
-      <td>{{$value->driving_licence}}</td>
-      <td>{{$value->customer_phone}}</td>
-      <td>{{$value->customer_address}}</td>
-      <td>{{$value->toll}}</td>
-      <td>
-      <img style="width:60px;
-                    height:60px;"
-         src="{{url('/uploads/tolls/'.$value->vehicle_image)}}" alt="image">
-      </td>
+      <th scope="row">{{$value->id}}</th>
+      <td>{{$value->toll_name}}</td>
+      <td>{{$value->gate_number}}</td>
+      <td>{{$value->road_line}}</td>
+      <td>{{$value->tollCategory->category_name}}</td>
+      <td>{{$value->tollChart->toll_price}}</td>
       <td>
         <a class="btn btn-info" href="">edit</a>
         <a class="btn btn-danger" href="">delete</a>
       </td>
+      
     </tr>
+
     @endforeach
+
   </tbody>
 </table>
-   
+{{ $tollCollections->links()}}
 
 @endsection

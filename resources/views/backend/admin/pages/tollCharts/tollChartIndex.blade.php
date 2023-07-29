@@ -10,7 +10,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Category Name</th>
-      <th scope="col">Tolls</th>
+      <th scope="col">Amounts</th>
       <th scope="col">Image</th>
       <th scope='col'>Action</th>
     </tr>
@@ -30,7 +30,7 @@
       </td>
       <td>
         <a class="btn btn-warning text-white" href="{{route('toll-chart.edit',$value->id)}}">Edit</a>
-        <a class="btn btn-danger" href="">delete</a>
+        <a class="btn btn-danger" href="{{route('toll-chart.destroy',$value->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach

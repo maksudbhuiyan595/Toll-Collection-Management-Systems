@@ -6,22 +6,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\TollChat;
 use App\Models\Toll;
+use App\Models\Toll_chart;
 use Illuminate\Http\Request;
 
 class TollController extends Controller
 {
     public function index(){
+
         $tollCollections=Toll::with(['tollCategory','tollChart'])->paginate(10);
        
-        return view('backend.admin.pages.tolls.tollIndex', compact('tollCollections'));
+        return view('backend.admin.pages.tolls.collectionIndex', compact('tollCollections'));
        
     }
     public function create(){
+
         $tollcats=Category::all();
-        $tollAmounts=TollChat::all();
-        return view('backend.admin.pages.tolls.tollCreate',compact('tollAmounts','tollcats'));
+        $tollAmounts=Toll_chart::all();
+        return view('backend.admin.pages.tolls.collectionCreate',compact('tollAmounts','tollcats'));
         
     }
 
@@ -44,25 +46,58 @@ class TollController extends Controller
          
         ]);
 
-        return redirect()->route('toll.index')->with('message','toll Successfully Created.');
+        return redirect()->route('collection.index')->with('message','toll Successfully Created.');
 
     }
-    /* public function edit($id)
+
+    public function edit($id)
     {
-        $data=Toll::find($id);
+        $tollcats=Category::all();
+        $tollAmounts=Toll_chart::all();
+        $collection=Toll::find($id);
         // dd($data);
-        return view('backend.admin.pages.tolls.edit',compact('data'));
-    } */
-   /*  public function update(Request $request, $id)
+        return view('backend.admin.pages.tolls.collectionEdit',compact('collection','tollAmounts','tollcats'));
+    } 
+    public function update(Request $request, $id)
     {
-        $updatedata=Toll::find($id);
-        $updatedata->update([
+        
+        $collection=Toll::find($id);
+        // dd($collection);
+        $collection->update([
             'toll_name'             =>$request->toll_name,
             'gate_number'           =>$request->gate_number,
             'road_line'             =>$request->road_line,
             'toll_category_id'      =>$request->toll_category_id,
             'toll_chart_id'         =>$request->toll_chart_id,
         ]);
-        return redirect()->route('toll.index');
-    } */
+        return redirect()->route('collection.index');
+    } 
+
+    public function destroy($id)
+    {
+        Toll::destroy($id);
+        return redirect()->back();
+    }
+
+    public function collectionReport()
+    {
+        return view('backend.admin.pages.tolls.collectionReport');
+    }
+    public function  collectionReportSearch(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'form_date'=>'required|date',
+            'to_date'=>'required|date|after:form_date'
+        ]);
+        $form=$request->form_date;
+        $to= $request->to_date;
+       
+        
+        $collectionReports=Toll::whereBetween('created_at',[$form,$to])->get();
+
+        // dd($reportCategory);
+        
+        return view('backend.admin.pages.tolls.collectionReport',compact('collectionReports'));
+    }
 }

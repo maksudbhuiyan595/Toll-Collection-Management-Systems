@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h1 class="mt-4 text-center">Toll Lists</h1>
-<a class="btn btn-lg btn-outline-primary" href="{{route('toll.create')}}">Create New</a>
+<h1 class="mt-4 text-center">Collection Lists</h1>
+<a class="btn btn-lg btn-outline-primary" href="{{route('collection.create')}}">Create New</a>
 
 <table class="table table-hover table-striped">
   <thead>
@@ -31,8 +31,8 @@
       <td>{{$value->tollCategory->category_name}}</td>
       <td>{{$value->tollChart->toll_price}}</td>
       <td>
-        <a class="btn btn-info" href="">edit</a>
-        <a class="btn btn-danger" href="">delete</a>
+        <a class="btn btn-info" href="{{route('collection.edit',$value->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('collection.destroy',$value->id)}}">Delete</a>
       </td>
       
     </tr>

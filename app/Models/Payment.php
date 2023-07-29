@@ -21,7 +21,7 @@ class Payment extends Model
     }
     public function payChart()
     {
-        return $this->belongsTo(TollChat::class,'pay_chart_id', 'id');
+        return $this->belongsTo(Toll_chart::class,'pay_chart_id', 'id');
     }
     public function payCustomer()
     {

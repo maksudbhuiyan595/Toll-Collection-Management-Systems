@@ -17,7 +17,7 @@ class Toll extends Model
         return $this->belongsTo(Category::class,'toll_category_id','id');
     }
    public function tollChart(){
-        return $this->belongsTo(TollChat::class,'toll_chart_id', 'id');
+        return $this->belongsTo(Toll_chart::class,'toll_chart_id', 'id');
     
 }
 }

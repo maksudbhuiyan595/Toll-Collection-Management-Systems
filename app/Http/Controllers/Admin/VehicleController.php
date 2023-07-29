@@ -76,4 +76,25 @@ class VehicleController extends Controller
 
         return redirect()->back();
     }
+    public function vehicleReport()
+    {
+        return view('backend.admin.pages.vehicles.vehicleReport');
+    }
+    public function  vehicleReportSearch(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'form_date'=>'required|date',
+            'to_date'=>'required|date|after:form_date'
+        ]);
+        $form=$request->form_date;
+        $to= $request->to_date;
+       
+        
+        $vehicleReports=Vehicle::whereBetween('created_at',[$form,$to])->get();
+
+        // dd($reportCategory);
+        
+        return view('backend.admin.pages.vehicles.vehicleReport',compact('vehicleReports'));
+    }
 }

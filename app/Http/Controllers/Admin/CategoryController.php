@@ -65,11 +65,31 @@ class CategoryController extends Controller
     }
     public function destroy($id)
     {
-        /* $category=Category::find($id);
-        $category->destroy($id); */
+       
         Category::destroy($id);
 
         return redirect()->back();
 
+    }
+    public function categoryReport()
+    {
+        return view('backend.admin.pages.categories.categoryReport');
+    }
+    public function  categoryReportSearch(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'form_date'=>'required|date',
+            'to_date'=>'required|date|after:form_date'
+        ]);
+        $form=$request->form_date;
+        $to= $request->to_date;
+       
+        
+        $reportCategory=Category::whereBetween('created_at',[$form,$to])->get();
+
+        // dd($reportCategory);
+        
+        return view('backend.admin.pages.categories.categoryReport',compact('reportCategory'));
     }
 }

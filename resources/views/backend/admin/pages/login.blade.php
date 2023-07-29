@@ -36,16 +36,18 @@
                 @if(Session::has('message'))
                     <p class="alert alert-info">{{ Session('message') }}</p>
                     @endif
-                    <div id="login-box" class="col-md-12">
-
-                        <form id="login-form" class="form" action="{{route('admin.do-login')}}" method="post">
-                        @csrf
-                            @if($errors->any())
+                    
+                    @if($errors->any())
                                 @foreach ($errors->all() as $err )
                                     <p class="alert alert-danger">{{$err}}</p>
                                 @endforeach
 
                             @endif
+                    <div id="login-box" class="col-md-12">
+
+                        <form id="login-form" class="form" action="{{route('admin.do-login')}}" method="post">
+                        @csrf
+                            
                         
                         <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">

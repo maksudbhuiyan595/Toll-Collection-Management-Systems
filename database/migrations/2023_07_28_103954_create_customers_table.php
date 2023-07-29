@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tolls', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('toll_name');
-            $table->integer('gate_number');
-            $table->integer('road_line');
-            $table->foreignId('toll_category_id')->constrained('categories')->restrictOnDelete();
-            $table->foreignId('toll_chart_id')->constrained('toll_chats')->restrictOnDelete();
+            $table->string('customer_name',100);
+            $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
+            $table->string('driving_licence');
+            $table->integer('customer_phone');
+            $table->text('customer_address');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tolls');
+        Schema::dropIfExists('customers');
     }
 };

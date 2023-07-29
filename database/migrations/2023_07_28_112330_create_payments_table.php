@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('vehicle_name');
-            $table->foreignId('category_id');
-            $table->string('plade_name')->nullable();
-            $table->string('plade_number',20);
-            $table->string('vehicle_image');
+            $table->string('date');
+            $table->string('time');
+            $table->foreignId('pay_category_id');
+            $table->foreignId('pay_vehicle_id');
+            $table->foreignId('pay_chart_id');
+            $table->foreignId('pay_customer_id');
+            $table->foreignId('pay_toll_id');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicle');
+        Schema::dropIfExists('payments');
     }
 };

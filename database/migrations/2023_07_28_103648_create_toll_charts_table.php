@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tolls', function (Blueprint $table) {
+        Schema::create('toll_charts', function (Blueprint $table) {
             $table->id();
-            $table->string('toll_name');
-            $table->integer('gate_number');
-            $table->integer('road_line');
-            $table->foreignId('toll_category_id')->constrained('toll_chats')->restrictOnDelete();
-            $table->foreignId('toll_chart_id')->constrained('toll_chats')->restrictOnDelete();
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->integer('toll_price');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tolls');
+        Schema::dropIfExists('toll_charts');
     }
 };

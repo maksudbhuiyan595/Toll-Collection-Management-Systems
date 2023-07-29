@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function index(){
-        $customer=Customer::with('customerData')->paginate(10);
-        return view('backend.admin.pages.customers.customerIndex', Compact('customer'));
+        $customers=Customer::with('customerData')->paginate(10);
+        return view('backend.admin.pages.customers.customerIndex', Compact('customers'));
     }
 
     public function create(){
@@ -41,4 +41,60 @@ class CustomerController extends Controller
         return redirect()->route('customer.index')->with('message','customer Successfully Created.');
 
     } 
+    public function edit($id)
+    {
+        $names=Vehicle::all();
+        $customer=Customer::find($id);
+        return view('backend.admin.pages.customers.customerEdit',compact('customer','names'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'customer_name'         =>'required',
+            'vehicle_id'            => 'required',
+            'driving_licence'       =>'required',
+            'customer_phone'        => 'required|max:13',
+            'customer_address'      => 'required'
+        ]);
+
+      $customer=Customer::find($id);
+      $customer->update([
+            'customer_name'          =>$request->customer_name,
+            'vehicle_id'             =>$request->vehicle_id,
+            'driving_licence'        =>$request->driving_licence,
+            'customer_phone'         =>$request->customer_phone,
+            'customer_address'       =>$request->customer_address
+        ]);
+
+        return redirect()->back()->with('message','customer Successfully Created.');
+
+    }
+    public function destroy($id)
+    {
+        Customer::destroy($id);
+        return redirect()->back()->with('msg','delete successfully');
+    }
+
+    public function customerReport()
+    {
+        return view('backend.admin.pages.customers.customerReport');
+    }
+    public function  customerReportSearch(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'form_date'=>'required|date',
+            'to_date'=>'required|date|after:form_date'
+        ]);
+        $form=$request->form_date;
+        $to= $request->to_date;
+       
+        
+        $customerReports=Customer::whereBetween('created_at',[$form,$to])->get();
+
+        // dd($reportCategory);
+        
+        return view('backend.admin.pages.customers.customerReport',compact('customerReports'));
+    }
 }

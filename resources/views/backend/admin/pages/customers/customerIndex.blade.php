@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($customer as $value)
+    @foreach($customers as $value)
     <tr>
       <th scope="row">{{$value->id}}</th>
       <td>{{$value->customer_name}}</td>
@@ -27,14 +27,13 @@
       <td>{{$value->customer_phone}}</td>
       <td>{{$value->customer_address}}</td>
       <td>
-        <a class="btn btn-info" href="">Show</a>
-        <a class="btn btn-warning" href="">Edit</a>
-        <a class="btn btn-danger" href="">Delete</a>
+        <a class="btn btn-warning" href="{{route('customer.edit',$value->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('customer.destroy',$value->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach
   </tbody>
 </table>
 
-{{$customer->links()}}
+{{$customers->links()}}
 @endsection

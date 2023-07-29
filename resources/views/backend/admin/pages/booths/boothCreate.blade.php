@@ -35,7 +35,7 @@
     <input type="date" class="form-control"name="date" placeholder="date" required>
   </div>
   <div class="d-grid gap-2">
-    <button class="btn btn-lg btn-outline-success" type="submit">Submit Information</button>
+    <button class="btn  btn-outline-success" type="submit">Submit</button>
   </div>
 </form>
    

@@ -28,8 +28,8 @@
       <td>{{$value->booth_pay}}</td>
       <td>{{$value->date}}</td>
       <td>
-        <a class="btn btn-warning" href="">edit</a>
-        <a class="btn btn-danger" href="">delete</a>
+        <a class="btn btn-warning" href="{{route('booth.edit',$value->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('booth.destroy',$value->id)}}">Dlete</a>
       </td>
     </tr>
 

@@ -8,7 +8,7 @@
       </div>
   @endif
 
-<form action="{{route('toll.store')}}" method="post" >
+<form action="{{route('collection.store')}}" method="post" >
 
   @if($errors->any())
     @foreach($errors->all() as $err)
@@ -48,7 +48,7 @@
               </select>
           </div>
           <div class="d-grid gap-2">
-    <button class="btn btn-outline-success" type="submit">Submit Information</button>
+    <button class="btn btn-outline-success" type="submit">Submit</button>
   </div>
 </form>
    

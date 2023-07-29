@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\BoothController;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BoothController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\TollController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TollChartController;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,81 +29,110 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index'])->name('home');
 
 
-/* user controller */
+/* UserController */
 Route::get('admin/login',[UserController::class,'login'])->name('admin.login');
 Route::post('admin/do-login',[UserController::class,'doLogin'])->name('admin.do-login');
-/* user controlller */
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
-    /* user controller */
+
+    /* UserController */
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
 
-        /* start dashboar controller */
+        /* DashboardController */
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
-   /*  Route::get('/search',[DashboardController::class,'search'])->name('search');
- */
-        /* end dashboar controller */
+    // Route::get('/search',[DashboardController::class,'search'])->name('search');
+
+       
     
 
-        /* start Category Controller  */
+        /* CategoryController  */
     Route::get('/category-index',[CategoryController::class,'index'])->name('category.index');
     Route::get('/category-create',[CategoryController::class,'create'])->name('category.create');
     Route::post('/category-store',[CategoryController::class,'store'])->name('category.store');
     Route::get('/category-edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
     Route::post('/category-update/{id}',[CategoryController::class,'update'])->name('category.update');
     Route::get('/category-destroy/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
-    
-        /* end Categoroy Controller */
-
-        
-         /* start vehicle Controller  */
-    Route::get('/vehicle-index',[VehicleController::class,'index'])->name('vehicle.index');
-    Route::get('/vehicle-create',[VehicleController::class,'create'])->name('vehicle.create');
-    Route::post('/vehicle-store',[VehicleController::class,'store'])->name('vehicle.store');
-    Route::get('/vehicle-edit/{id}',[VehicleController::class,'edit'])->name('vehicle.edit');
-    Route::post('/vehicle-update/{id}',[VehicleController::class,'update'])->name('vehicle.update');
-    Route::get('/vehicle-destroy/{id}',[VehicleController::class,'destroy'])->name('vehicle.destroy'); 
-    
-        /* end vehicle Controller */
-
-        /* start tollChart Controller  */
+   
+     /* toll-ChartController  */
     Route::get('/toll-chart-index',[TollChartController::class,'index'])->name('toll-chart.index');
     Route::get('/toll-chart-create',[TollChartController::class,'create'])->name('toll-chart.create');
     Route::post('/toll-chart-store',[TollChartController::class,'store'])->name('toll-chart.store');
     Route::get('/toll-chart-edit/{id}',[TollChartController::class,'edit'])->name('toll-chart.edit');
     Route::post('/toll-chart-update/{id}',[TollChartController::class,'update'])->name('toll-chart.update');
     Route::get('/toll-chart-destroy/{id}',[TollChartController::class,'destroy'])->name('toll-chart.destroy');
-        /* end tollChart Controller */
 
+         /* vehicleController  */
+    Route::get('/vehicle-index',[VehicleController::class,'index'])->name('vehicle.index');
+    Route::get('/vehicle-create',[VehicleController::class,'create'])->name('vehicle.create');
+    Route::post('/vehicle-store',[VehicleController::class,'store'])->name('vehicle.store');
+    Route::get('/vehicle-edit/{id}',[VehicleController::class,'edit'])->name('vehicle.edit');
+    Route::post('/vehicle-update/{id}',[VehicleController::class,'update'])->name('vehicle.update');
+    Route::get('/vehicle-destroy/{id}',[VehicleController::class,'destroy'])->name('vehicle.destroy'); 
 
-        /* start Customer Controller  */
+        /* CustomerController  */
     Route::get('/customer-index',[CustomerController::class,'index'])->name('customer.index');
     Route::get('/customer-create',[CustomerController::class,'create'])->name('customer.create');
     Route::post('/customer-store',[CustomerController::class,'store'])->name('customer.store');
-        /* end Customer Controller */
+    Route::get('/customer-edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
+    Route::post('/customer-update/{id}',[CustomerController::class,'update'])->name('customer.update');
+    Route::get('/customer-destroy/{id}',[CustomerController::class,'destroy'])->name('customer.destroy');
 
-        /* start Toll Controller  */
-    Route::get('/toll-index',[TollController::class,'index'])->name('toll.index');
-    Route::get('/toll-create',[TollController::class,'create'])->name('toll.create');
-    Route::post('/toll-store',[TollController::class,'store'])->name('toll.store');
-   /*  Route::get('/toll-edit/{id}',[TollController::class,'edit'])->name('toll.edit');
-    Route::post('/toll-update/{id}',[TollController::class,'update'])->name('toll.update');
-    Route::get('/toll-delete/{id}',[TollController::class,'destroy'])->name('toll.destroy'); */
-        /* end Toll Controller */
+        /* TollController  */
+    Route::get('/collection-index',[TollController::class,'index'])->name('collection.index');
+    Route::get('/collection-create',[TollController::class,'create'])->name('collection.create');
+    Route::post('/collection-store',[TollController::class,'store'])->name('collection.store');
+    Route::get('/collection-edit/{id}',[TollController::class,'edit'])->name('collection.edit');
+    Route::post('/collection-update/{id}',[TollController::class,'update'])->name('collection.update');
+    Route::get('/collection-delete/{id}',[TollController::class,'destroy'])->name('collection.destroy'); 
 
-             /* start Payment Controller  */
+        /*PaymentController  */
     Route::get('/payment-index',[PaymentController::class,'index'])->name('payment.index');
     Route::get('/payment-create',[PaymentController::class,'create'])->name('payment.create');
     Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
-    
-        /* end Payment Controller */
+    Route::get('/payment-edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
+    Route::post('/payment-update/{id}',[PaymentController::class,'update'])->name('payment.update');
+    Route::get('/payment-delete/{id}',[PaymentController::class,'destroy'])->name('payment.destroy'); 
 
-        /* start Payment Controller  */
+        /* BoothController  */
     Route::get('/booth-index',[BoothController::class,'index'])->name('booth.index');
     Route::get('/booth-create',[BoothController::class,'create'])->name('booth.create');
     Route::post('/booth-store',[BoothController::class,'store'])->name('booth.store');
-        /* end Payment Controller */
+    Route::get('/booth-edit/{id}',[BoothController::class,'edit'])->name('booth.edit');
+    Route::post('/booth-update/{id}',[BoothController::class,'update'])->name('booth.update');
+    Route::get('/booth-delete/{id}',[BoothController::class,'destroy'])->name('booth.destroy'); 
+
+    /* Report section
+           --/ Category Report--*/
+    Route::get('/category-report',[CategoryController::class,'categoryReport'])->name('category.report');
+    Route::get('/category-search-report',[CategoryController::class,'categoryReportSearch'])->name('categrory.report.search');
+
+            /* Vehicle report */
+        Route::get('/vehicle-report',[VehicleController::class,'vehicleReport'])->name('vehicle.report');
+        Route::get('/vehicle-search-report',[VehicleController::class,'vehicleReportSearch'])->name('vehicle.report.search');
+
+                /* Toll-chart report */
+            Route::get('/toll-chart-report',[TollChartController::class,'tollChartReport'])->name('tollChart.report');
+            Route::get('/toll-chart-search-report',[TollChartController::class,'tollChartReportSearch'])->name('tollChart.report.search');
+                    
+                    /* Customer report */
+                Route::get('/customer-report',[CustomerController::class,'customerReport'])->name('customer.report');
+                Route::get('/customer-search-report',[CustomerController::class,'customerReportSearch'])->name('customer.report.search');
+
+                    /* Collection report */
+                    Route::get('/collection-report',[TollController::class,'collectionReport'])->name('collection.report');
+                    Route::get('/collection-search-report',[TollController::class,'collectionReportSearch'])->name('collection.report.search');
+
+                     /* payment report */
+                     Route::get('/payment-report',[PaymentController::class,'paymentReport'])->name('payment.report');
+                     Route::get('/payment-search-report',[PaymentController::class,'paymentReportSearch'])->name('payment.report.search');
+
+                            /* booth report */
+                        Route::get('/booth-report',[BoothController::class,'boothReport'])->name('booth.report');
+                        Route::get('/booth-search-report',[BoothController::class,'boothReportSearch'])->name('booth.report.search');
+
+                            /* end report section */
+
 });
 
 

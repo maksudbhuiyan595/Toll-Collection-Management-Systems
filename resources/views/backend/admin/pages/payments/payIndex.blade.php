@@ -22,7 +22,7 @@
   <tbody>
     @foreach($paymentData as $value)
     <tr>
-      <th scope="row">{{$loop->iteration}}</th>
+      <th scope="row">{{$value->id}}</th>
       <td>{{$value->payToll->toll_name}}</td>
       <td>{{$value->date}}</td>
       <td>{{$value->time}}</td>
@@ -31,8 +31,8 @@
       <td>{{$value->payVehicle->vehicle_name}}</td>
       <td>{{$value->payChart->toll_price}}</td>
       <td>
-        <a class="btn btn-warning" href="">Edit</a>
-        <a class="btn btn-danger" href="">Delete</a>
+        <a class="btn btn-warning" href="{{route('payment.edit',$value->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('payment.destroy',$value->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach

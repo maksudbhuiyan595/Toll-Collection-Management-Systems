@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
-use App\Models\TollChat;
 use App\Http\Controllers\Controller;
-use App\Models\Toll;
+use App\Models\Toll_chart;
 use Illuminate\Http\Request;
 
 class TollChartController extends Controller
 {
     public function index()
     {   
-        $tollCharts=TollChat::with('TollData')->paginate(10);
+        $tollCharts=Toll_chart::with('TollData')->paginate(10);
+        // dd($tollCharts);
         return view('backend.admin.pages.tollCharts.tollChartIndex',compact('tollCharts'));
     }
     public function create()
@@ -39,7 +39,7 @@ class TollChartController extends Controller
 
        //dd($fileName);
 
-       TollChat::create([
+       Toll_chart::create([
 
         'category_id'   =>$request->category_id,
         'toll_price'    =>$request->toll_price,
@@ -51,14 +51,14 @@ class TollChartController extends Controller
     }
     public function edit($id)
     {
-        $tollChart=TollChat::find($id);
+        $tollChart=Toll_chart::find($id);
         $cats=Category::all();
         return view('backend.admin.pages.tollCharts.tollChartEdit', compact('tollChart','cats'));
     }
 
     public function update(Request $request, $id)
     {
-        $tollChart=TollChat::find($id);
+        $tollChart=Toll_chart::find($id);
 
         $tollChart->update([
         'category_id'   =>$request->category_id,
@@ -69,7 +69,28 @@ class TollChartController extends Controller
     }
     public function destroy($id)
     {
-        TollChat::destroy($id);
+        Toll_chart::destroy($id);
         return redirect()->back();
+    }
+    public function tollChartReport()
+    {
+        return view('backend.admin.pages.tollCharts.tollChartReport');
+    }
+    public function  tollChartReportSearch(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'form_date'=>'required|date',
+            'to_date'=>'required|date|after:form_date'
+        ]);
+        $form=$request->form_date;
+        $to= $request->to_date;
+       
+        
+        $tollChartReports=Toll_chart::whereBetween('created_at',[$form,$to])->get();
+
+        // dd($reportCategory);
+        
+        return view('backend.admin.pages.tollCharts.tollChartReport',compact('tollChartReports'));
     }
 }

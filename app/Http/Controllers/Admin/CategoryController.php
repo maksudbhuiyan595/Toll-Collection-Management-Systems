@@ -21,7 +21,9 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
-        //dd($request);
+        // dd($request->all());
+
+
        $request->validate([
             'category_name'  =>'required',
              'category_image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
@@ -38,7 +40,8 @@ class CategoryController extends Controller
       
         Category::create([
             'category_name'  =>$request->category_name, 
-            'category_image' =>$fileName
+            'category_status'=>$request->status,
+           'category_image' =>$fileName
         ]);
 
         return redirect()->back()->with('msg','Category Successfully Created.');
@@ -58,6 +61,7 @@ class CategoryController extends Controller
       $category=Category::find($id);
       $category->update([
             'category_name'  =>$request->category_name, 
+            'category_status'=>$request->status,
             
         ]);
 

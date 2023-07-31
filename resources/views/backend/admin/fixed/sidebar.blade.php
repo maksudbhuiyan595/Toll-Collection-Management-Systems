@@ -52,7 +52,8 @@
 
             <p>
             <button style="border-style: none;" class="btn active" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-            <i class="fa-regular fa-ballot"></i> Reports
+   
+            Reports
             </button>
             </p>
             <div style="">

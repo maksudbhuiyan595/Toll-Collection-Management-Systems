@@ -1,26 +1,32 @@
 @extends('backend.admin.master')
 
 @section('content')
-
-  @if(session()->has('message'))
-      <div class="alert alert-success">
-          {{ session()->get('message') }}
-      </div>
-  @endif
+<div class="row">
+  <div class="col-md-8 offset-md-2 ">
+    <div class="card mt-3 p-5">
+   
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
 
 <form action="{{route('toll-chart.store')}}" method="post" enctype="multipart/form-data">
-
-  @if($errors->any())
-    @foreach($errors->all() as $err)
-    <p class="alert alert-danger">{{$err}}</p>
-    @endforeach
-  @endif
-
     @csrf
-    <h1 class="mt-3">Create New Toll-Chart</h1>
+
+          @if($errors->any())
+            @foreach($errors->all() as $err)
+            <p class="alert alert-danger">{{$err}}</p>
+            @endforeach
+          @endif
+
+  
+    <a class="btn btn-outline-secondary" href="{{route('toll-chart.index')}}">Back</a>
+    <h1 class="text-center"><strong>Create New Toll-Chart</strong></h1>
+    <hr>
 
   <div class="mb-3">
-    <label class="form-label">Category Name</label>
+    <label class="form-label"><strong>Category Name:</strong></label>
 
     <select class="form-control" name="category_id" required>
      @foreach ($cats as $value)
@@ -30,16 +36,19 @@
 
   </div>
   <div class="mb-3">
-    <label class="form-label">Tolls</label>
+    <label class="form-label"><strong>Toll:</strong></label>
     <input type="number" class="form-control"name="toll_price"  placeholder="Entet toll amount" required>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Image</label>
+    <label class="form-label"><strong>Image:</strong></label>
     <input type="file" class="form-control"name="toll_image"  placeholder="image" required>
   </div>
-  <button type="submit" class="btn btn-lg btn-outline-success">Submit</button>
+  <div class="d-grid gap-2">
+  <button type="submit" class="btn btn-outline-success">Submit</button>
+  </div>
 </form>
-   
-
+</div>
+  </div>
+ </div>
 @endsection

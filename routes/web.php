@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TollChartController;
-use App\Models\Payment;
 use Illuminate\Support\Facades\Route;
 
 

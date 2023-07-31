@@ -3,8 +3,8 @@
 @section('content')
 <div class="row">
   <div class="col-md-8 offset-md-2 ">
-    <div class="card m-3 p-5">
-    <a class="btn mb-1 btn-outline-info " href="{{route('category.index')}}">Back</a>
+    <div class="card mt-3 p-5">
+   
           @if(session()->has('msg'))
             
           <div class="alert alert-success">
@@ -13,21 +13,29 @@
           @endif
 
       <form action="{{route('category.update',$category->id)}}" method="post">
+      @csrf
+            @if($errors->any())
+              @foreach($errors->all() as $err)
+              <p class="alert alert-danger">{{$err}}</p>
+              @endforeach
+            @endif
 
-        @if($errors->any())
-          @foreach($errors->all() as $err)
-          <p class="alert alert-danger">{{$err}}</p>
-          @endforeach
-        @endif
-
-        @csrf
-        <h2 class="mt-3 text-center"><strong>Category Edit Form</strong></h2>
+      
+        <a class="btn btn-outline-secondary " href="{{route('category.index')}}">Back</a>
+        <h2 class="text-center"><strong>Category Edit Form</strong></h2>
+        <hr>
 
         <div class="mb-3">
-          <label class="form-label">Category Name</label>
+          <label class="form-label"><strong>Category Name:</strong></label>
           <input type="text" class="form-control" name="category_name" value="{{$category->category_name}}" placeholder="Enter Category Name" required>
         </div>
-       
+        <div class="mb-3">
+          <label class="form-label"><strong>Status<strong></label>
+         <select class="form-control" name="status">
+            <option value="Inactive">Inactive</option>
+            <option value="active">Active</option>
+         </select>
+        </div>
         <div class="d-grid gap-2">
           <button class="btn btn-outline-success" type="submit">Update</button>
         </div>

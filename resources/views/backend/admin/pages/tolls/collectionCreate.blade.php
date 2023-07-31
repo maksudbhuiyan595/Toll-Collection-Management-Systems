@@ -1,12 +1,15 @@
 @extends('backend.admin.master')
 
 @section('content')
-
-  @if(session()->has('message'))
-      <div class="alert alert-success">
-          {{ session()->get('message') }}
-      </div>
-  @endif
+<div class="row">
+  <div class="col-md-8 offset-md-2 ">
+    <div class="card m-3 p-5">
+      
+          @if(session()->has('message'))
+              <div class="alert alert-success">
+                  {{ session()->get('message') }}
+              </div>
+          @endif
 
 <form action="{{route('collection.store')}}" method="post" >
 
@@ -51,6 +54,7 @@
     <button class="btn btn-outline-success" type="submit">Submit</button>
   </div>
 </form>
-   
-
+</div>
+  </div>
+ </div>
 @endsection

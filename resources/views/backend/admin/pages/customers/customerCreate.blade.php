@@ -1,12 +1,15 @@
 @extends('backend.admin.master')
 
 @section('content')
+<div class="row">
+  <div class="col-md-8 offset-md-2 ">
+    <div class="card m-3 p-5">
 
-  @if(session()->has('message'))
-      <div class="alert alert-success">
-          {{ session()->get('message') }}
-      </div>
-  @endif
+          @if(session()->has('message'))
+              <div class="alert alert-success">
+                  {{ session()->get('message') }}
+              </div>
+          @endif
 
 <form action="{{route('customer.store')}}" method="post">
 
@@ -45,6 +48,8 @@
   </div>
   <button type="submit" class="btn btn-lg btn-outline-success">Submit</button>
 </form>
-   
 
+    </div>
+  </div>
+</div>
 @endsection

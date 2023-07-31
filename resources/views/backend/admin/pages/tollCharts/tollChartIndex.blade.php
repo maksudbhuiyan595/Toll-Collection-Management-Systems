@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h1 class="mt-4">Toll-Charts</h1>
-<a class="btn btn-primary" href="{{route('toll-chart.create')}}">Create</a>
+<h1 class="mt-4 text-center"><strong>All Category Toll-Charts</strong></h1>
+<a class="btn btn-outline-primary" href="{{route('toll-chart.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
   <thead>

@@ -32,7 +32,7 @@ class CustomerController extends Controller
       
         Customer::create([
             'customer_name'          =>$request->customer_name,
-            'vehicle_id'           =>$request->vehicle_id,
+            'vehicle_id'             =>$request->vehicle_id,
             'driving_licence'        =>$request->driving_licence,
             'customer_phone'         =>$request->customer_phone,
             'customer_address'       =>$request->customer_address

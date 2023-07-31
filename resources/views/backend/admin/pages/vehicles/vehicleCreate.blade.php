@@ -4,31 +4,34 @@
 
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <div class="card mt-3 p-3">
-        <a class="btn mb-1 btn-outline-info " href="{{route('vehicle.index')}}">Back</a>
-            <div class="card-body">
-                @if(session()->has('message'))
-                    <div class="alert alert-success">
-                        {{ session()->get('message') }}
-                    </div>
-                @endif
-          <form action="{{route('vehicle.store')}}" method="post" enctype="multipart/form-data">
-              @if($errors->any())
-                @foreach($errors->all() as $err)
-                <p class="alert alert-danger">{{$err}}</p>
-                @endforeach
-              @endif
+        <div class="card mt-3 p-5">
 
-               @csrf
-            <h1 class="mt-3 text-center"><strong>Vehicle Create From</strong></h1>
+            <div class="card-body">
+                  @if(session()->has('message'))
+                      <div class="alert alert-success">
+                          {{ session()->get('message') }}
+                      </div>
+                  @endif
+          <form action="{{route('vehicle.store')}}" method="post" enctype="multipart/form-data">
+              @csrf
+                  @if($errors->any())
+                    @foreach($errors->all() as $err)
+                    <p class="alert alert-danger">{{$err}}</p>
+                    @endforeach
+                  @endif
+
+            
+               <a class="btn btn-outline-secondary " href="{{route('vehicle.index')}}">Back</a>
+            <h1 class="text-center"><strong>Vehicle Create From</strong></h1>
+            <hr>
           
             <div class="mb-3">
-              <label class="form-label">Vehicle Name</label>
-              <input type="text" class="form-control"name="vehicle_name" value="" placeholder="enter name">
+              <label class="form-label"><strong>Vehicle Name:</strong></label>
+              <input type="text" class="form-control"name="vehicle_name" value="" placeholder="Enter name" required>
             </div>
             <div class="mb-3">
-              <label class="form-label">Category Name</label>
-                <select class="form-control" name="category_id" >
+              <label class="form-label"><strong>Category Name:</strong></label>
+                <select class="form-control" name="category_id" required>
                   @foreach($cats as $value)
                     <option value="{{$value->id}}">{{$value->category_name}}</option>
                   @endforeach
@@ -36,16 +39,16 @@
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Vehicle Plade Name</label>
-              <input type="text" class="form-control"name="plade_name" placeholder="enter plade name">
+              <label class="form-label"><strong>Vehicle Plade Name:</strong></label>
+              <input type="text" class="form-control"name="plade_name" placeholder="Enter plade name" required>
             </div>
             <div class="mb-3">
-              <label class="form-label">Vehicle Plade Number</label>
-              <input type="number" class="form-control"name="plade_number" placeholder="enter number">
+              <label class="form-label"><strong>Vehicle Plade Number:</strong></label>
+              <input type="number" class="form-control"name="plade_number" placeholder="Enter number" required>
             </div>
             <div class="mb-3">
-              <label class="form-label">Vehicle Images</label>
-              <input type="file" class="form-control"name="vehicle_image" placeholder="image">
+              <label class="form-label"><strong>Vehicle Images:</strong></label>
+              <input type="file" class="form-control"name="vehicle_image" placeholder="image" required>
             </div>
             <div class="d-grid gap-2">
               <button class="btn btn-outline-success" type="submit">Submit</button>

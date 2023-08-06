@@ -36,11 +36,10 @@ class CategoryController extends Controller
             $image->storeAs('/categories',$fileName);
         }
 
-       // dd($fileName);
+    //    dd($fileName);
       
         Category::create([
             'category_name'  =>$request->category_name, 
-            'category_status'=>$request->status,
            'category_image' =>$fileName
         ]);
 

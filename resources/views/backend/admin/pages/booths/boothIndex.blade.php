@@ -3,7 +3,7 @@
 @section('content')
 
 <h1 class="mt-4">Booths</h1>
-<a class="btn btn-outline-primary" href="{{route('booth.create')}}">Create New</a>
+<a class="btn btn-outline-primary" href="{{route('booth.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
   <thead>

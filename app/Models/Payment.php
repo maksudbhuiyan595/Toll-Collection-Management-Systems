@@ -25,7 +25,7 @@ class Payment extends Model
     }
     public function payCustomer()
     {
-        return $this->belongsTo(Customer::class,'pay_category_id', 'id');
+        return $this->belongsTo(Customer::class,'pay_customer_id', 'id');
     }
     public function payToll()
     {

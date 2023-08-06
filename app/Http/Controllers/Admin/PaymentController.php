@@ -53,8 +53,14 @@ class PaymentController extends Controller
             'pay_toll_id'       =>$request->pay_toll_id,
         ]);
 
-        return redirect()->route('payment.index');
+        return redirect()->route('payment.cashOn');
     }
+    public function cashOn(){
+        $cashOnData=Payment::with(['payCategory', 'payVehicle', 'payChart','payCustomer','payToll'])->paginate(10);
+        
+        return view('backend.admin.pages.payments.cashOn',compact('cashOnData'));
+    }
+
     public function edit($id)
     {
         $payTolls=Toll::all();
@@ -120,4 +126,5 @@ class PaymentController extends Controller
         
         return view('backend.admin.pages.payments.payReport',compact('paymentReports'));
 }
+   
 }

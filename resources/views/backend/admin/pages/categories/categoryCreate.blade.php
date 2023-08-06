@@ -33,15 +33,6 @@
           <input type="file" class="form-control"name="category_image" placeholder="Image" required>
         </div>
 
-
-        <div class="mb-3">
-          <label class="form-label"><strong>Status<strong></label>
-         <select class="form-control" name="status">
-            <option value="Inactive">Inactive</option>
-            <option value="active">Active</option>
-         </select>
-        </div>
-      
         <div class="d-grid gap-2">
           <button class="btn btn-outline-success" type="submit">Submit</button>
         </div>

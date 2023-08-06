@@ -89,9 +89,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/payment-index',[PaymentController::class,'index'])->name('payment.index');
     Route::get('/payment-create',[PaymentController::class,'create'])->name('payment.create');
     Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
+    Route::get('/cash-on-delivary',[PaymentController::class,'cashOn'])->name('payment.cashOn'); 
     Route::get('/payment-edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
     Route::post('/payment-update/{id}',[PaymentController::class,'update'])->name('payment.update');
-    Route::get('/payment-delete/{id}',[PaymentController::class,'destroy'])->name('payment.destroy'); 
+    Route::get('/payment-delete/{id}',[PaymentController::class,'destroy'])->name('payment.destroy');
+   
+
 
         /* BoothController  */
     Route::get('/booth-index',[BoothController::class,'index'])->name('booth.index');

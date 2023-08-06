@@ -18,7 +18,7 @@
   <tbody>
     @foreach($categories as $value)
     <tr>
-      <th scope="row">{{$value->id}}</th>
+      <th scope="row">{{$loop->iteration}}</th>
       <td>{{$value->category_name}}</td>
       <td>{{$value->category_status}}</td>
       <td>

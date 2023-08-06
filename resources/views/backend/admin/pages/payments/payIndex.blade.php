@@ -20,6 +20,7 @@
     </tr>
   </thead>
   <tbody>
+  
     @foreach($paymentData as $value)
     <tr>
       <th scope="row">{{$value->id}}</th>

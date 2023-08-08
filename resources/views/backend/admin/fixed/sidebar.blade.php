@@ -42,10 +42,7 @@
                 <div class="sb-nav-link-icon"></div>
                 Payments
             </a>
-            <a class="nav-link" href="{{route('booth.index')}}"><i class="fa-solid fa-credit-card"></i>
-                <div class="sb-nav-link-icon"></div>
-                Booths
-            </a>
+            
 
 
             <!-- reports section -->
@@ -78,16 +75,13 @@
                 </a>
                 <a class="nav-link" href="{{route('collection.report')}}">
                     <div class="sb-nav-link-icon"></div>
-                    Collections Report
+                    TollBootsh Report
                 </a>
                 <a class="nav-link" href="{{route('payment.report')}}">
                     <div class="sb-nav-link-icon"></div>
                     Payments Report
                 </a>
-                <a class="nav-link" href="{{route('booth.report')}}">
-                    <div class="sb-nav-link-icon"></div>
-                    Booths Report
-                    </a>
+               
                 </div>
              </div>
             </div>

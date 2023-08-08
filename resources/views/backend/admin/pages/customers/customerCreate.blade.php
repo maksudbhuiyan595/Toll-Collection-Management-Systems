@@ -40,7 +40,7 @@
   </div>
   <div class="mb-3">
     <label class="form-label">Customer Phone Number</label>
-    <input type="number" class="form-control"name="customer_phone">
+    <input type="text" class="form-control"name="customer_phone">
   </div>
   <div class="mb-3">
     <label class="form-label">Customer Address</label>

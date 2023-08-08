@@ -89,21 +89,13 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/payment-index',[PaymentController::class,'index'])->name('payment.index');
     Route::get('/payment-create',[PaymentController::class,'create'])->name('payment.create');
     Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
-    Route::get('/cash-on',[PaymentController::class,'cashOn'])->name('payment.cashOn'); 
+    Route::get('/payment-cashOn',[PaymentController::class,'cashOn'])->name('payment.cashOn'); 
+    Route::get('/payment-do-cash',[PaymentController::class,'doCash'])->name('payment.doCash');
+    Route::get('/payment-view-cash/{id}',[PaymentController::class,'viewCash'])->name('payment.viewCash');
     Route::get('/payment-edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
     Route::post('/payment-update/{id}',[PaymentController::class,'update'])->name('payment.update');
     Route::get('/payment-delete/{id}',[PaymentController::class,'destroy'])->name('payment.destroy');
    
-
-
-        /* BoothController  */
-    Route::get('/booth-index',[BoothController::class,'index'])->name('booth.index');
-    Route::get('/booth-create',[BoothController::class,'create'])->name('booth.create');
-    Route::post('/booth-store',[BoothController::class,'store'])->name('booth.store');
-    Route::get('/booth-edit/{id}',[BoothController::class,'edit'])->name('booth.edit');
-    Route::post('/booth-update/{id}',[BoothController::class,'update'])->name('booth.update');
-    Route::get('/booth-delete/{id}',[BoothController::class,'destroy'])->name('booth.destroy'); 
-
     /* Report section
            --/ Category Report--*/
     Route::get('/category-report',[CategoryController::class,'categoryReport'])->name('category.report');
@@ -128,10 +120,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
                      /* payment report */
                      Route::get('/payment-report',[PaymentController::class,'paymentReport'])->name('payment.report');
                      Route::get('/payment-search-report',[PaymentController::class,'paymentReportSearch'])->name('payment.report.search');
-
-                            /* booth report */
-                        Route::get('/booth-report',[BoothController::class,'boothReport'])->name('booth.report');
-                        Route::get('/booth-search-report',[BoothController::class,'boothReportSearch'])->name('booth.report.search');
 
                             /* end report section */
 

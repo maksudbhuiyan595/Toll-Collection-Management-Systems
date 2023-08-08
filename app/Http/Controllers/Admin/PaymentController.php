@@ -53,13 +53,18 @@ class PaymentController extends Controller
 
         return redirect()->route('payment.cashOn');
     }
-    public function cashOn(){
+    public function cashOn()
+    {
         
-        $cashOnData=Payment::with(['payCategory', 'payVehicle', 'payChart','payCustomer','payToll'])->paginate(10);
-        
-
-        return view('backend.admin.pages.payments.cashOn',compact('cashOnData'));
+        return view('backend.admin.pages.payments.cashOn');
     }
+    public function doCash()
+    {
+
+        return view('backend.admin.pages.payments.doCash');
+
+    }
+    
 
     public function edit($id)
     {

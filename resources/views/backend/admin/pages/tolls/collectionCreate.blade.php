@@ -20,18 +20,18 @@
   @endif
 
     @csrf
-    <h1 class="mt-3">Create New Colletion</h1>
+    <h1 class="mt-3">Create New TollBooth</h1>
           <div class="mb-3">
             <label class="form-label">Toll Plaza Name</label>
-              <input type="text" class="form-control" name="toll_name" value="Uttara Plaza">
+              <input type="text" class="form-control" name="toll_name" value="Uttara Plaza" >
           </div>
           <div class="mb-3">
             <label class="form-label">Gate Number</label>
-              <input type="number" class="form-control"name="gate_number">
+              <input type="number" class="form-control"name="gate_number" value="1">
           </div>
           <div class="mb-3">
             <label class="form-label">Line</label>
-              <input type="number" class="form-control"name="road_line">
+              <input type="number" class="form-control"name="road_line" value="1">
           </div>
           <div class="mb-3">
             <label class="form-label">Category</label>

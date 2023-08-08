@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('date');
+            $table->string('collection_status')->default('offline');
             $table->foreignId('pay_category_id')->constrained('categories')->cascadeOnDelete();
             $table->foreignId('pay_vehicle_id')->constrained('vehicles')->cascadeOnDelete();
             $table->foreignId('pay_chart_id')->constrained('toll_charts')->cascadeOnDelete();

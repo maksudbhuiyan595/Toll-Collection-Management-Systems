@@ -10,6 +10,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Date</th>
+      <th scope="col">Collection Status</th>
       <th scope="col">Plaza Name</th>
       <th scope="col">Category Name</th>
       <th scope="col">Vehicle Name</th>
@@ -28,6 +29,7 @@
     <tr>
       <th scope="row">{{$value->id}}</th>
       <td>{{$value->date}}</td>
+      <td>{{$value->collection_status}}</td>
       <td>{{$value->payToll->toll_name}}</td>
       <td>{{$value->payCategory->category_name}}</td>
       <td>{{$value->payVehicle->vehicle_name}}</td>

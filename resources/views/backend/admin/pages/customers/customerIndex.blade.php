@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h1 class="mt-4">Customers</h1>
-<a class="btn btn-primary" href="{{route('customer.create')}}">Create</a>
+<h1 class="mt-4 text-center"><strong>Toll Colllection Customer  Lists</strong></h1>
+<a class="btn btn-outline-primary" href="{{route('customer.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
   <thead>

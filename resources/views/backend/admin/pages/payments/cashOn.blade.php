@@ -2,38 +2,32 @@
 
 @section('content')
 
-
-        <div class="card p-3 mt-5">
-            <div class="card-header">
-                <h1>Cash on Delivary</h1>
-                <div class="card-body">
-                    
-
-                <div id="paymentReport">
-
-
-                        @if(isset($cashOnData))
-                        @foreach($cashOnData as $value)
-                        
-                      <ul>
-                        <li scope="row">{{$loop->iteration}}</li>
-                        <li>{{$value->payToll->toll_name}}</li>
-                        <li>{{$value->date}}</li>
-                        <li>{{$value->time}}</li>
-                        <li>{{$value->payCustomer->customer_name}}</li>
-                        <li>{{$value->payCategory->category_name}}</li>
-                        <li>{{$value->payVehicle->vehicle_name}}</li>
-                        <li>{{$value->payChart->toll_price}}</li>
-                        
-                        </ul>
-                        @endforeach
-                        @endif
-                   
-                  
-                    </div>
-                    <div class="d-grid gap-2">
-                        
-                            <a class="btn btn-success" href="{{route('payment.index')}}">Cash On Delivary</a>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+             
+                <div class="card p-3 mt-3">
+                    <div class="card-header">
+                        <h1>Payment</h1>
+                        <div class="card-body">
+                            <div id="paymentReport">
+                            
+                               <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    @foreach ($cashOnData as $data)
+                                        
+                                           
+                                            <option  value="{{$data->id}}">{{$data->date}}</option>
+                            
+                                        
+                                    @endforeach
+                                        
+                                </div>
+                               </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                
+                            <a class="btn btn-success" href="{{route('payment.index')}}">Back</a>
                             <button onclick="printDiv('paymentReport')" class="btn btn-outline-info">Print</button>
                         
                         </div>
@@ -48,14 +42,9 @@
                         }
                         </script>
                     </div>    
-
-
-
-
                 </div>
             </div>
         </div>
-
-
+  
 
 @endsection

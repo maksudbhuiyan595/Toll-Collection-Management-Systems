@@ -22,11 +22,13 @@ class VehicleController extends Controller
 
     public function store(Request $request){
         //dd($request);
-       /* $request->validate([
+       $request->validate([
             'vehicle_name'        =>'required',
-            'vehicle_road_toll'  => 'required',
-            'vehicle_image'      => 'required|image|mimes:png,jpg,jpeg|max:2048'
-        ]); */
+            'category_id'         =>'required',
+            'plade_name'          => 'required',
+            'plade_number'        => 'required',
+            'vehicle_image'       => 'required|image|mimes:png,jpg,jpeg|max:2048'
+        ]);
          
         $fileName= null;
         if($request->hasfile('vehicle_image')){
@@ -41,8 +43,7 @@ class VehicleController extends Controller
        ([
             'vehicle_name'      =>$request->vehicle_name, 
             'category_id'       =>$request->category_id,
-            'plade_name'        =>$request->plade_name,
-            'plade_number'     =>$request->plade_number,
+            'plade_number'     =>$request->plade_name.'-'.$request->plade_number,
             'vehicle_image'    =>$fileName
         ]); 
 
@@ -63,8 +64,7 @@ class VehicleController extends Controller
 
             'vehicle_name'      =>$request->vehicle_name, 
             'category_id'       =>$request->category_id,
-            'plade_name'        =>$request->plade_name,
-            'plade_number'     =>$request->plade_number,
+            'plade_number'     =>$request->plade_name.'-'.$request->plade_number
            
 
         ]);

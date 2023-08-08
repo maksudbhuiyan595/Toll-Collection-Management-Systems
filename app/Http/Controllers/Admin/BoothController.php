@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booth;
+use App\Models\Category;
+use App\Models\Toll_chart;
 use Illuminate\Http\Request;
 
 class BoothController extends Controller
@@ -14,8 +16,11 @@ class BoothController extends Controller
         return view('backend.admin.pages.booths.boothIndex', compact('boothData'));
     }
     public function create()
-    {
-        return view('backend.admin.pages.booths.boothCreate');
+    {   
+        $categoryData=Category::all();
+        $chartData= Toll_chart::all();
+        // dd($categoryData);
+        return view('backend.admin.pages.booths.boothCreate', compact('categoryData','chartData'));
     }
     public function store(Request $request)
     {

@@ -3,7 +3,7 @@
 @section('content')
 
 <h1 class="mt-4 text-center">Collection Lists</h1>
-<a class="btn btn-lg btn-outline-primary" href="{{route('collection.create')}}">Create New</a>
+<a class="btn btn-outline-primary" href="{{route('collection.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
   <thead>

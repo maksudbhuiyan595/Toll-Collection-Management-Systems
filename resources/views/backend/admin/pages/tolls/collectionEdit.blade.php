@@ -1,14 +1,3 @@
-@extends('backend.admin.master')
-
-@section('content')
-
-  @if(session()->has('message'))
-      <div class="alert alert-success">
-          {{ session()->get('message') }}
-      </div>
-  @endif
-
-<form action="{{route('collection.update',$collection->id)}}" method="post" >
 
   @if($errors->any())
     @foreach($errors->all() as $err)

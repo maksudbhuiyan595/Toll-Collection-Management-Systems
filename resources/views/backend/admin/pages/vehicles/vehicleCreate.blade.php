@@ -27,7 +27,7 @@
           
             <div class="mb-3">
               <label class="form-label"><strong>Vehicle Name:</strong></label>
-              <input type="text" class="form-control"name="vehicle_name" value="" placeholder="Enter name" required>
+              <input type="text" class="form-control"name="vehicle_name" placeholder="Enter name" required>
             </div>
             <div class="mb-3">
               <label class="form-label"><strong>Category Name:</strong></label>
@@ -44,7 +44,7 @@
             </div>
             <div class="mb-3">
               <label class="form-label"><strong>Vehicle Plade Number:</strong></label>
-              <input type="number" class="form-control"name="plade_number" placeholder="Enter number" required>
+              <input type="text" class="form-control"name="plade_number" placeholder="Enter number" required>
             </div>
             <div class="mb-3">
               <label class="form-label"><strong>Vehicle Images:</strong></label>

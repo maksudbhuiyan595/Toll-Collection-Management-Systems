@@ -11,7 +11,7 @@
           </div>
       @endif
 
-<form action="{{route('booth.store')}}" method="post" >
+<form action="" method="" >
 
   @if($errors->any())
     @foreach($errors->all() as $err)
@@ -29,10 +29,25 @@
     <label class="form-label">Card Number</label>
     <input type="text" class="form-control"name="card_number" placeholder="card number" required>
   </div>
+<!-- @dd($categoryData) -->
+  <div class="mb-3">
+    <label class="form-label">Category Name</label>
+    <select name="category_id" class="form-control" >
+    @foreach ($categoryData as $value)
+    <option value="{{$value->id}}">{{$value->category_name}}</option>
+    @endforeach
+    
+    </select>
+  </div>
+
   <div class="mb-3">
     <label class="form-label">Booth Pay</label>
-    <input type="text" class="form-control" name="booth_pay" placeholder="booth pay" required>
+    <select name="toll_cahrt_id" class="form-control" >
+
+    <option value=""></option>
+    </select>
   </div>
+  
   <div class="mb-3">
     <label class="form-label">Date</label>
     <input type="date" class="form-control"name="date" placeholder="date" required>

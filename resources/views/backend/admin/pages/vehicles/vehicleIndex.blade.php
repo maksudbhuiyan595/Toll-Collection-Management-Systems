@@ -12,7 +12,6 @@
       <th scope="col">#</th>
       <th scope="col">Vehicle Name</th>
       <th scope="col">Vehicle Category</th>
-      <th scope="col">Plade Name</th>
       <th scope="col">Plade Number</th>
       <th scope="col">Image</th>
       <th scope='col'>Action</th>
@@ -26,7 +25,6 @@
       <th scope="row">{{$value->id}}</th>
       <td>{{$value->vehicle_name}}</td>
       <td>{{$value->vehicleData->category_name}}</td>
-      <td>{{$value->plade_name}}</td>
       <td>{{$value->plade_number}}</td>
       <td>
       <img style="width:60px;

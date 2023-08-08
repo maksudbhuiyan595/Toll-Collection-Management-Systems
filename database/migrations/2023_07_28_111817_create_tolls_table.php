@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('tolls', function (Blueprint $table) {
             $table->id();
             $table->string('toll_name');
-            $table->integer('gate_number');
-            $table->integer('road_line');
-            $table->foreignId('toll_category_id');
-            $table->foreignId('toll_chart_id');
+            $table->integer('gate_number')->nullable();
+            $table->integer('road_line')->nullable();
+            $table->foreignId('toll_category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignId('toll_chart_id')->constrained('toll_charts')->cascadeOnDelete();
             $table->timestamps();
         });
     }

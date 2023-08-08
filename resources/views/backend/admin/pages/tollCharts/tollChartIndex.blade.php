@@ -19,7 +19,7 @@
   
     @foreach($tollCharts as $value)
     <tr>
-      <th scope="row">{{$loop->iteration}}</th>
+      <th scope="row">{{$value->id}}</th>
       <td>{{$value->tollData->category_name}}</td>
       <td>{{$value->toll_price}}</td>
       <td>

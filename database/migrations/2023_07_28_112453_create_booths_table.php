@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('booth_name');
             $table->string('card_number');
-            $table->integer('booth_pay');
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignId('toll_chart_id')->constrained('toll_charts')->cascadeOnDelete();
             $table->string('date');
             $table->timestamps();
         });

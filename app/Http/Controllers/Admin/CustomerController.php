@@ -44,8 +44,8 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $names=Vehicle::all();
-        $customer=Customer::find($id);
-        return view('backend.admin.pages.customers.customerEdit',compact('customer','names'));
+        $customers=Customer::find($id);
+        return view('backend.admin.pages.customers.customerEdit',compact('customers','names'));
     }
 
     public function update(Request $request, $id)

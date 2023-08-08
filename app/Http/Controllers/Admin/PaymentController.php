@@ -35,7 +35,6 @@ class PaymentController extends Controller
         // dd($request->all());
         $request->validate([
             'date'              =>'required',
-            'time'              =>'required',
             'pay_category_id'   => 'required',
             'pay_vehicle_id'    => 'required',
             'pay_chart_id'      => 'required',
@@ -45,7 +44,6 @@ class PaymentController extends Controller
         
         Payment::create([
             'date'              =>$request->date,
-            'time'              =>$request->time,
             'pay_category_id'   =>$request->pay_category_id,
             'pay_vehicle_id'    =>$request->pay_vehicle_id,
             'pay_chart_id'      =>$request->pay_chart_id,
@@ -56,8 +54,10 @@ class PaymentController extends Controller
         return redirect()->route('payment.cashOn');
     }
     public function cashOn(){
+        
         $cashOnData=Payment::with(['payCategory', 'payVehicle', 'payChart','payCustomer','payToll'])->paginate(10);
         
+
         return view('backend.admin.pages.payments.cashOn',compact('cashOnData'));
     }
 
@@ -76,7 +76,6 @@ class PaymentController extends Controller
     {
         $request->validate([
             'date'              =>'required',
-            'time'              =>'required',
             'pay_category_id'   => 'required',
             'pay_vehicle_id'    => 'required',
             'pay_chart_id'      => 'required',
@@ -87,7 +86,6 @@ class PaymentController extends Controller
         $payment=Payment::find($id);
         $payment->update([
             'date'              =>$request->date,
-            'time'              =>$request->time,
             'pay_category_id'   =>$request->pay_category_id,
             'pay_vehicle_id'    =>$request->pay_vehicle_id,
             'pay_chart_id'      =>$request->pay_chart_id,

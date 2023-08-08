@@ -26,6 +26,7 @@ class CategoryController extends Controller
 
        $request->validate([
             'category_name'  =>'required',
+            'status'          =>'required',
              'category_image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ]);
          
@@ -40,7 +41,9 @@ class CategoryController extends Controller
       
         Category::create([
             'category_name'  =>$request->category_name, 
+            'category_status' =>$request->status,
            'category_image' =>$fileName
+
         ]);
 
         return redirect()->back()->with('msg','Category Successfully Created.');
@@ -55,6 +58,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name'  =>'required',
+            'status'          =>'required',
              
         ]);
       $category=Category::find($id);

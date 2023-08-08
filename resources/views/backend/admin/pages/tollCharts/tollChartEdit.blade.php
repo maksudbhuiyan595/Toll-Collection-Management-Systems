@@ -36,7 +36,7 @@
   </div>
   <div class="mb-3">
     <label class="form-label"><strong>Toll:</strong></label>
-    <input type="number" class="form-control"name="toll_price"  placeholder="Entet toll amount" required>
+    <input type="number" class="form-control"name="toll_price" value="{{$tollChart->toll_price}}"  placeholder="Entet toll amount" required>
   </div>
 
   <div class="d-grid gap-2">

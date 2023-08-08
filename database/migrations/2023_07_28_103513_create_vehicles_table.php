@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('vehicle_name');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
-            $table->string('plade_name')->nullable();
-            $table->string('plade_number',20)->nullable();
+            $table->string('plade_number',50)->nullable();
             $table->string('vehicle_image')->nullable();
             $table->timestamps();
         });

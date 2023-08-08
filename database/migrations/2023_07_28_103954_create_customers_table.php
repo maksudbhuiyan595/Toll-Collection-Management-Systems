@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('customer_name',100);
             $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
-            $table->string('driving_licence');
-            $table->integer('customer_phone');
-            $table->text('customer_address');
+            $table->string('driving_licence')->nullable();
+            $table->string('customer_phone')->nullable();
+            $table->text('customer_address')->nullable();
             $table->timestamps();
         });
     }

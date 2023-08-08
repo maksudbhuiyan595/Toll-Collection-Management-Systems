@@ -29,6 +29,14 @@
           <label class="form-label"><strong>Category Name:</strong></label>
           <input type="text" class="form-control" name="category_name" value="{{$category->category_name}}" placeholder="Enter Category Name" required>
         </div>
+        
+        <div class="mb-3">
+          <label class="form-label"><strong>Category Status</strong></label>
+          <select name="status" class="form-control">
+            <option value="active">Active</option>
+            <option value="deactive">DeActive</option>
+          </select>
+        </div>
      
         <div class="d-grid gap-2">
           <button class="btn btn-outline-success" type="submit">Update</button>

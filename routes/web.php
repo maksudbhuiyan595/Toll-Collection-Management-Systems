@@ -35,15 +35,12 @@ Route::post('admin/do-login',[UserController::class,'doLogin'])->name('admin.do-
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 
     /* UserController */
+    Route::get('/profile',[UserController::class,'adminProfile'])->name('admin.profile');
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
-
+    
         /* DashboardController */
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');
-
-    // Route::get('/search',[DashboardController::class,'search'])->name('search');
-
-       
-    
+   
 
         /* CategoryController  */
     Route::get('/category-index',[CategoryController::class,'index'])->name('category.index');

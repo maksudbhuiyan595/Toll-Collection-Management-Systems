@@ -34,10 +34,15 @@ class UserController extends Controller
         }
        
     }
+
+    public function adminProfile(){
+        return view('backend.admin.pages.profiles.index');
+    }
     public function logout(){
 
         auth::logout();
 
         return redirect()->route('admin.login')->with('message','logout successfully.');
     }
+    
 }

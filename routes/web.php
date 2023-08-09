@@ -36,6 +36,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 
     /* UserController */
     Route::get('/profile',[UserController::class,'adminProfile'])->name('admin.profile');
+    Route::get('/profile',[UserController::class,'adminProfile'])->name('admin.profile');
+
+
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
     
         /* DashboardController */
@@ -86,9 +89,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/payment-index',[PaymentController::class,'index'])->name('payment.index');
     Route::get('/payment-create',[PaymentController::class,'create'])->name('payment.create');
     Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
-    Route::get('/payment-cashOn',[PaymentController::class,'cashOn'])->name('payment.cashOn'); 
-    Route::get('/payment-do-cash',[PaymentController::class,'doCash'])->name('payment.doCash');
-    Route::get('/payment-view-cash/{id}',[PaymentController::class,'viewCash'])->name('payment.viewCash');
     Route::get('/payment-edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
     Route::post('/payment-update/{id}',[PaymentController::class,'update'])->name('payment.update');
     Route::get('/payment-delete/{id}',[PaymentController::class,'destroy'])->name('payment.destroy');

@@ -51,20 +51,9 @@ class PaymentController extends Controller
             'pay_toll_id'       =>$request->pay_toll_id,
         ]);
 
-        return redirect()->route('payment.cashOn');
+        return redirect()->route('payment.index');
     }
-    public function cashOn()
-    {
-        
-        return view('backend.admin.pages.payments.cashOn');
-    }
-    public function doCash()
-    {
-
-        return view('backend.admin.pages.payments.doCash');
-
-    }
-    
+   
 
     public function edit($id)
     {

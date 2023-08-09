@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Payment;
 use App\Models\Vehicle;
@@ -14,8 +15,9 @@ class DashboardController extends Controller
 
         $totalVehicle= Vehicle::count();
         $totalCustomer=Customer::count();
-        $totalPayment=Payment::count();
-        return view('backend.admin.pages.dashboard', compact('totalVehicle', 'totalCustomer', 'totalPayment'));
+        $totalPayment=Payment::count('pay_chart_id->toll_price');
+        $totalCategory= Category::count();
+        return view('backend.admin.pages.dashboard', compact('totalVehicle', 'totalCustomer', 'totalPayment','totalCategory'));
     }
  
 }

@@ -35,8 +35,10 @@ Route::post('admin/do-login',[UserController::class,'doLogin'])->name('admin.do-
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 
     /* UserController */
-    Route::get('/profile',[UserController::class,'adminProfile'])->name('admin.profile');
-    Route::get('/profile',[UserController::class,'adminProfile'])->name('admin.profile');
+    Route::get('/profile-index',[UserController::class,'index'])->name('profile.index');
+    Route::get('/profile-edit',[UserController::class,'edit'])->name('profile.edit');
+    Route::get('/profile-update',[UserController::class,'update'])->name('profile.update');
+
 
 
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');

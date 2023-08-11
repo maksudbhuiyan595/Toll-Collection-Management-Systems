@@ -26,7 +26,7 @@ class CustomerController extends Controller
             'customer_name'         =>'required',
             'vehicle_id'            => 'required',
             'driving_licence'       =>'required',
-            'customer_phone'        => 'required|max:13',
+            'customer_phone'        => 'required',
             'customer_address'      => 'required'
         ]);
       
@@ -54,7 +54,7 @@ class CustomerController extends Controller
             'customer_name'         =>'required',
             'vehicle_id'            => 'required',
             'driving_licence'       =>'required',
-            'customer_phone'        => 'required|max:13',
+            'customer_phone'        => 'required',
             'customer_address'      => 'required'
         ]);
 

@@ -27,9 +27,12 @@
 </style>
 
 <body>
+
     <div id="login">
-        <h3 class="text-center text-white pt-5">Login Form</h3>
+    <a href="{{route('home')}}" class="nav-item nav-link btn btn-secondary p-3 ">Home</a>
         <div class="container">
+        
+        <h3 class="text-center text-white mt-3"> Admin Login Form</h3>
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
 
@@ -50,6 +53,7 @@
                             
                         
                         <h3 class="text-center text-info">Login</h3>
+                        
                             <div class="form-group">
                                 <label class="text-info">Username:</label><br>
                                 <input required type="email" name="email" class="form-control">
@@ -60,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                <!--  <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
-                                <input type="submit" class="btn btn-info btn-md" value="submit">
+                                <input type="submit" class="btn btn-info btn-md" value="Login">
                             </div>
                             <!-- <div id="register-link" class="text-right">
                                 <a href="#" class="text-info">Register here</a>

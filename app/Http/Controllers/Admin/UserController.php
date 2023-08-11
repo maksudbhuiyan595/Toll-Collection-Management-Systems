@@ -35,7 +35,7 @@ class UserController extends Controller
        
     }
 
-    public function adminProfile(){
+    public function index(){
         return view('backend.admin.pages.profiles.index');
     }
     public function logout(){

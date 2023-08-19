@@ -23,7 +23,7 @@
 
                 
                   <a class="btn btn-outline-secondary" href="{{route('toll-chart.index')}}">Back</a>
-                  <h1 class="text-center"><strong>Create New Toll-Chart</strong></h1>
+                  <h1 class="text-center"><strong>Create New Toll Chart</strong></h1>
                   <hr>
 
                 <div class="mb-3">

@@ -54,6 +54,13 @@ class PaymentController extends Controller
         return redirect()->route('payment.index');
     }
    
+    public function show($id){
+        
+        $payment=Payment::find($id);
+        // dd($payment);
+        return view('backend.admin.pages.payments.payShow',compact('payment'));
+        
+    }
 
     public function edit($id)
     {
@@ -92,6 +99,7 @@ class PaymentController extends Controller
 
     public function destroy($id)
     {
+        // dd($id);
         Payment::destroy($id);
         return redirect()->back();
     }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="mt-4 text-center"><strong>All Category Toll-Charts</strong></h1>
+<h1 class="mt-4 text-center"><strong>All Category of Toll Charts</strong></h1>
 <a class="btn btn-outline-primary" href="{{route('toll-chart.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
@@ -17,9 +17,9 @@
   </thead>
   <tbody>
   
-    @foreach($tollCharts as $value)
+    @foreach($tollCharts as $key=>$value)
     <tr>
-      <th scope="row">{{$value->id}}</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$value->tollData->category_name}}</td>
       <td>{{$value->toll_price}}</td>
       <td>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="mt-4 text-center"><strong>Toll Colllection Customer  Lists</strong></h1>
+<h1 class="mt-4 text-center"><strong>Toll Colllection of Customer  Lists</strong></h1>
 <a class="btn btn-outline-primary" href="{{route('customer.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
@@ -18,9 +18,9 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($customers as $value)
+    @foreach($customers as $key=>$value)
     <tr>
-      <th scope="row">{{$value->id}}</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$value->customer_name}}</td>
       <td>{{$value->customerData->vehicle_name}}</td>
       <td>{{$value->driving_licence}}</td>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1 class="mt-4 text-center"><strong>Toll Collection Category Lists</strong></h1>
+  <h1 class="mt-4 text-center"><strong>Toll Collection of Category Lists</strong></h1>
 <a class="btn btn-outline-primary " href="{{route('category.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
@@ -17,9 +17,10 @@
   </thead>
   <tbody>
     
-    @foreach($categories as $value)
+    @foreach($categories as $key=>$value)
+
     <tr>
-      <th scope="row">{{$value->id}}</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$value->category_name}}</td>
       <td>{{$value->category_status}}</td>
       <td>
@@ -29,7 +30,10 @@
       </td>
       <td>
         <a class="btn btn-warning text-white" href="{{route('category.edit',$value->id)}}">Edit</a>
-        <a class="btn btn-danger" href="{{route('category.destroy',$value->id)}}">Delete</a>
+        <a  class="btn btn-danger" href="{{route('category.destroy',$value->id)}}">Delete</a>
+
+
+
       </td>
     </tr>
     @endforeach

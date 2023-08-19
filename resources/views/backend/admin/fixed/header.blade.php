@@ -19,12 +19,13 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">
 
-             {{auth()->user()->name}}
+                {{auth()->user()->name}}
 
                 </a></li>
                 <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
                 
                 <li><hr class="dropdown-divider" /></li>
+
                 <li><a class="dropdown-item" href="{{route('admin.logout')}}">Logout</a></li>
             </ul>
         </li>

@@ -21,10 +21,7 @@
                 <div class="sb-nav-link-icon"></div>
                 Categories
             </a>
-            <a class="nav-link" href="{{route('toll-chart.index')}}"><i class="fa-solid fa-chart-simple"></i>
-                <div class="sb-nav-link-icon"></div>
-                TollCharts
-            </a>
+           
             <a class="nav-link" href="{{route('vehicle.index')}}"><i class="fa-solid fa-car"></i>
                 <div class="sb-nav-link-icon"></div>
                 Vehicles
@@ -34,16 +31,19 @@
                 <div class="sb-nav-link-icon"></div>
                 Customers
             </a>
+            <a class="nav-link" href="{{route('toll-chart.index')}}"><i class="fa-solid fa-chart-simple"></i>
+                <div class="sb-nav-link-icon"></div>
+                Toll Charts
+            </a>
             <a class="nav-link" href="{{route('collection.index')}}"><i class="fa-solid fa-toilets-portable"></i>
                 <div class="sb-nav-link-icon"></div>
-               TollBooths
+               Tolls
             </a>
             <a class="nav-link" href="{{route('payment.index')}}"><i class="fa-brands fa-get-pocket"></i>
                 <div class="sb-nav-link-icon"></div>
                 Payments
             </a>
             
-
 
             <!-- reports section -->
 

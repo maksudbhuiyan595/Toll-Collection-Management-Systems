@@ -36,16 +36,7 @@
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
 
-                @if(Session::has('message'))
-                    <p class="alert alert-info">{{ Session('message') }}</p>
-                    @endif
-                    
-                    @if($errors->any())
-                                @foreach ($errors->all() as $err )
-                                    <p class="alert alert-danger">{{$err}}</p>
-                                @endforeach
-
-                            @endif
+                
                     <div id="login-box" class="col-md-12">
 
                         <form id="login-form" class="form" action="{{route('admin.do-login')}}" method="post">

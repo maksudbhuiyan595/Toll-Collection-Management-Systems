@@ -20,7 +20,8 @@
   @endif
 
     @csrf
-    <h1 class="mt-3">Create New Pyament</h1>
+    <h1 class="mt-3 text-center"><strong>Create New Pyament & CheckOut</strong></h1>
+    <hr>
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
@@ -115,7 +116,7 @@
               </select>
           </div>
       </div>
-      <button type="submit" class="btn btn-outline-success">Payment</button>
+      <button type="submit" class="btn btn-outline-success">Cash On</button>
   
     </form>
   </div>

@@ -8,7 +8,7 @@
   <div class="col-md-10 offset-md-1">
     <div class="card m-3 p-3">
       <div class="card-body">
-        <h2 class="text-center"><strong>Create collection report</strong></h2>
+        <h2 class="text-center"><strong>Create Collection Report</strong></h2>
         <hr class="mb-3">
 
           @if(session()->has('msg'))

@@ -21,7 +21,7 @@
 
  
     <a class="btn btn-secondary" href="{{route('toll-chart.index')}}">Back</a>
-    <h1 class="mt-3 text-center"><strong>Toll-Chart Edit Form</strong></h1>
+    <h1 class="mt-3 text-center"><strong>Toll Chart Edit Form</strong></h1>
     <hr>
 
   <div class="mb-3">

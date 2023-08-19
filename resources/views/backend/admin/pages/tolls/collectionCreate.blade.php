@@ -20,7 +20,7 @@
   @endif
 
     @csrf
-    <h1 class="mt-3">Create New TollBooth</h1>
+    <h1 class="mt-3">Create New Toll From</h1>
           <div class="mb-3">
             <label class="form-label">Toll Plaza Name</label>
               <input type="text" class="form-control" name="toll_name" value="Uttara Plaza" >

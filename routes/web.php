@@ -1,9 +1,7 @@
 <?php
 
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\BoothController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\TollController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -11,8 +9,8 @@ use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TollChartController;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('toll-cahrt',[HomeController::class,'tollChart'])->name('home.tollChart');
 
 
 /* UserController */
@@ -35,10 +34,8 @@ Route::post('admin/do-login',[UserController::class,'doLogin'])->name('admin.do-
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 
     /* UserController */
-    Route::get('/profile-index',[UserController::class,'index'])->name('profile.index');
-    Route::get('/profile-edit',[UserController::class,'edit'])->name('profile.edit');
-    Route::get('/profile-update',[UserController::class,'update'])->name('profile.update');
-
+    Route::get('/profile-index/',[UserController::class,'profile'])->name('profile.index');
+    Route::post('/profile-update/',[UserController::class,'profileUpdate'])->name('profile.update');
 
 
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
@@ -91,6 +88,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/payment-index',[PaymentController::class,'index'])->name('payment.index');
     Route::get('/payment-create',[PaymentController::class,'create'])->name('payment.create');
     Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
+    Route::get('/payment-show/{id}',[PaymentController::class,'show'])->name('payment.show');
     Route::get('/payment-edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
     Route::post('/payment-update/{id}',[PaymentController::class,'update'])->name('payment.update');
     Route::get('/payment-delete/{id}',[PaymentController::class,'destroy'])->name('payment.destroy');
@@ -121,5 +119,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
                      Route::get('/payment-search-report',[PaymentController::class,'paymentReportSearch'])->name('payment.report.search');
 
                             /* end report section */
-
+    
+           
 });

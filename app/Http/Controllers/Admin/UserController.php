@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,13 +31,35 @@ class UserController extends Controller
         {
             return redirect()->route('dashboard');
         }else{
-            return redirect()->back()->withErrors(['Invalid login information']);
+            // Toastr::success('message', 'Login Successfully');
+            return redirect()->back();
+            
         }
        
     }
 
-    public function index(){
+    public function profile(){
+       
+        
         return view('backend.admin.pages.profiles.index');
+    }
+    public function profileUpdate(Request $request ){
+        
+        $request->validate([
+
+            'user_name'=>'required',
+            'user_email'=>'required',
+            'change_pass'=>'required',
+        ]);
+        
+        User::create([
+
+            'name'=>$request->user_name,
+            'email'=>$request->user_email,
+            'password'=>$request->change_pass,
+        ]);
+        
+        return redirect()->back();
     }
     public function logout(){
 

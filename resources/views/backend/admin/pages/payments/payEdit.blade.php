@@ -80,6 +80,7 @@
                 
               </select>
           </div>
+
           <div class="mb-3">
             <label class="form-label">Driving Licence</label>
               <select class="form-control" name="pay_customer_id" required>
@@ -89,6 +90,7 @@
                 
               </select>
           </div>
+
           <div class="mb-3">
             <label class="form-label">Mobile</label>
               <select class="form-control" name="pay_customer_id" required>
@@ -98,6 +100,7 @@
                 
               </select>
           </div>
+
           <div class="mb-3">
             <label class="form-label">Address</label>
               <select class="form-control" name="pay_customer_id" required>
@@ -117,10 +120,12 @@
                 
               </select>
           </div>
-          <!-- col- md- 6 end -->
-    
+
         </div>
-      <button type="submit" class="btn  btn-outline-success">Update</button>
+          <!-- col- md- 6 end -->
+          <button type="submit" class="btn btn-outline-success">Update</button>
+        </div>
+      
     </form>
       </div>
     </div>

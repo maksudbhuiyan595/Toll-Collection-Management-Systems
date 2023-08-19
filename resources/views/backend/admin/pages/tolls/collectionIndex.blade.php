@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="mt-4 text-center"><strong>TollBooth Lists</strong></h1>
+<h1 class="mt-4 text-center"><strong>Toll Colleciton of Toll Lists</strong></h1>
 <a class="btn btn-outline-primary" href="{{route('collection.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
@@ -21,10 +21,10 @@
   <tbody>
   <tbody>
     
-    @foreach($tollCollections as $value)
+    @foreach($tollCollections as $key=>$value)
     
     <tr>
-      <th scope="row">{{$value->id}}</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$value->toll_name}}</td>
       <td>{{$value->gate_number}}</td>
       <td>{{$value->road_line}}</td>

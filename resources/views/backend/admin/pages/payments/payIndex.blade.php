@@ -2,7 +2,8 @@
 
 @section('content')
 
-<h1 class="mt-4"> Payments</h1>
+<h1 class="mt-4 text-center"><strong>Toll Collection Payment Lists</strong></h1>
+<hr>
 <a class="btn btn-outline-primary" href="{{route('payment.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
@@ -25,9 +26,9 @@
   </thead>
   <tbody>
   
-    @foreach($paymentData as $value)
+    @foreach($paymentData as $key=>$value)
     <tr>
-      <th scope="row">{{$value->id}}</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$value->date}}</td>
       <td>{{$value->collection_status}}</td>
       <td>{{$value->payToll->toll_name}}</td>
@@ -40,8 +41,10 @@
       <td>{{$value->payCustomer->customer_address}}</td>
       <td>{{$value->payChart->toll_price}}</td>
       <td>
+        <a class="btn btn-info" href="{{route('payment.show',$value->id)}}">Show</a>
         <a class="btn btn-warning" href="{{route('payment.edit',$value->id)}}">Edit</a>
         <a class="btn btn-danger" href="{{route('payment.destroy',$value->id)}}">Delete</a>
+      
       </td>
     </tr>
     @endforeach

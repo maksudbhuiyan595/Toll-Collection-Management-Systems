@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h1 class="mt-4 text-center"><strong>Toll Collection Vehicle Lists</strong></h1>
+<h1 class="mt-4 text-center"><strong>Toll Collection of Vehicle Lists</strong></h1>
 <a class="btn btn-outline-primary" href="{{route('vehicle.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">
@@ -19,10 +19,10 @@
   </thead>
   <tbody>
     
-    @foreach ($vehicles as $value)
+    @foreach ($vehicles as $key=>$value)
     
     <tr>
-      <th scope="row">{{$value->id}}</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$value->vehicle_name}}</td>
       <td>{{$value->vehicleData->category_name}}</td>
       <td>{{$value->plade_number}}</td>

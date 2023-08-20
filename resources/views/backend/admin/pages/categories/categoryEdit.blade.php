@@ -5,20 +5,10 @@
   <div class="col-md-8 offset-md-2 ">
     <div class="card mt-3 p-5">
    
-          @if(session()->has('msg'))
-            
-          <div class="alert alert-success">
-                  {{ session()->get('msg') }}
-              </div>
-          @endif
 
       <form action="{{route('category.update',$category->id)}}" method="post">
       @csrf
-            @if($errors->any())
-              @foreach($errors->all() as $err)
-              <p class="alert alert-danger">{{$err}}</p>
-              @endforeach
-            @endif
+            
 
       
         <a class="btn btn-outline-secondary " href="{{route('category.index')}}">Back</a>

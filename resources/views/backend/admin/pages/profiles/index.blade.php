@@ -89,14 +89,14 @@
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">
-                  <form action="{{route('profile.index')}}" method="post">
+                  <form action="" method="post">
                             <div class="mb-3">
                             <label for="">User Name:</label>
-                            <input type="text" class="form-control" name="user_name" value="" placeholder="user name">
+                            <input type="text" class="form-control" name="user_name" value="{{auth()->user()->name}}" placeholder="user name">
                             </div>
                             <div class="mb-3">
                             <label for="">User Email</label>
-                            <input type="email" class="form-control" name="user_email" value="" placeholder="user email">
+                            <input type="email" class="form-control" name="user_email" value="{{auth()->user()->email}}" placeholder="user email">
                             </div>
                             <div class="mb-3">
                             <!-- <label for="">Choose Image</label>
@@ -104,7 +104,7 @@
                             </div> -->
                             <div class="mb-3">
                             <label for="">Change Password</label>
-                            <input type="password" class="form-control" name="change_pass" value="" placeholder="password">
+                            <input type="password" class="form-control" name="change_pass" value="{{auth()->user()->password}}" placeholder="password">
                             </div>
                             <button type="submit" class="btn btn-success">Update</button>
                         </form>

@@ -5,21 +5,9 @@
 <div class="row">
     <div class="col-md-8 offset-md-2">
         <div class="card mt-3 p-5">
-
             <div class="card-body">
-                  @if(session()->has('message'))
-                      <div class="alert alert-success">
-                          {{ session()->get('message') }}
-                      </div>
-                  @endif
           <form action="{{route('vehicle.store')}}" method="post" enctype="multipart/form-data">
               @csrf
-                  @if($errors->any())
-                    @foreach($errors->all() as $err)
-                    <p class="alert alert-danger">{{$err}}</p>
-                    @endforeach
-                  @endif
-
             
                <a class="btn btn-outline-secondary " href="{{route('vehicle.index')}}">Back</a>
             <h1 class="text-center"><strong>Vehicle Create From</strong></h1>

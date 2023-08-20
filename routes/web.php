@@ -34,8 +34,8 @@ Route::post('admin/do-login',[UserController::class,'doLogin'])->name('admin.do-
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 
     /* UserController */
-    Route::get('/profile-index/',[UserController::class,'profile'])->name('profile.index');
-    Route::post('/profile-update/',[UserController::class,'profileUpdate'])->name('profile.update');
+    Route::get('/profile-edit',[UserController::class,'profileEdit'])->name('profile.edit');
+    Route::post('/profile-update',[UserController::class,'profileUpdate'])->name('profile.update');
 
 
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
@@ -48,6 +48,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/category-index',[CategoryController::class,'index'])->name('category.index');
     Route::get('/category-create',[CategoryController::class,'create'])->name('category.create');
     Route::post('/category-store',[CategoryController::class,'store'])->name('category.store');
+    Route::post('/category-show',[CategoryController::class,'show'])->name('category.show');
     Route::get('/category-edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
     Route::post('/category-update/{id}',[CategoryController::class,'update'])->name('category.update');
     Route::get('/category-destroy/{id}',[CategoryController::class,'destroy'])->name('category.destroy');

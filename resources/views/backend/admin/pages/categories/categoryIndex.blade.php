@@ -29,6 +29,7 @@
          src="{{url('/uploads/categories/'.$value->category_image)}}" alt="image">
       </td>
       <td>
+      
         <a class="btn btn-warning text-white" href="{{route('category.edit',$value->id)}}">Edit</a>
         <a  class="btn btn-danger" href="{{route('category.destroy',$value->id)}}">Delete</a>
 

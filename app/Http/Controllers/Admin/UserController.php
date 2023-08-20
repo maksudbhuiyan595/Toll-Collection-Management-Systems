@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,19 +32,21 @@ class UserController extends Controller
         {
             return redirect()->route('dashboard');
         }else{
-            // Toastr::success('message', 'Login Successfully');
+            
+            Toastr::success('Successfully Login', 'User');
             return redirect()->back();
             
         }
        
     }
 
-    public function profile(){
+    public function profileEdit(){
        
         
+        // $user= User::find($id);
         return view('backend.admin.pages.profiles.index');
     }
-    public function profileUpdate(Request $request ){
+   /*  public function profileUpdate(Request $request,$id ){
         
         $request->validate([
 
@@ -52,6 +55,7 @@ class UserController extends Controller
             'change_pass'=>'required',
         ]);
         
+        $user=User::find($id);
         User::create([
 
             'name'=>$request->user_name,
@@ -60,12 +64,13 @@ class UserController extends Controller
         ]);
         
         return redirect()->back();
-    }
+    } */
     public function logout(){
 
         auth::logout();
 
-        return redirect()->route('admin.login')->with('message','logout successfully.');
+        Toastr::success('Successfully Logout', 'User');
+        return redirect()->back();
     }
     
 }

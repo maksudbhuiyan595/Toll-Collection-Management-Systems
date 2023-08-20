@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -38,7 +39,8 @@ class CustomerController extends Controller
             'customer_address'       =>$request->customer_address
         ]);
 
-        return redirect()->route('customer.index')->with('message','customer Successfully Created.');
+        Toastr::success('Successfully Created', 'Customer');
+        return redirect()->back();
 
     } 
     public function edit($id)
@@ -67,13 +69,15 @@ class CustomerController extends Controller
             'customer_address'       =>$request->customer_address
         ]);
 
-        return redirect()->back()->with('message','customer Successfully Created.');
+        Toastr::success('Successfully Updated', 'Customer');
+        return redirect()->back();
 
     }
     public function destroy($id)
     {
         Customer::destroy($id);
-        return redirect()->back()->with('msg','delete successfully');
+        Toastr::error('Successfully Deleted', 'Customer');
+        return redirect()->back();
     }
 
     public function customerReport()

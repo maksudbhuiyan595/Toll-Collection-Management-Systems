@@ -7,20 +7,10 @@
         <div class="card mt-3 p-3">
        
             <div class="card-body">
-                @if(session()->has('message'))
-                    <div class="alert alert-success">
-                        {{ session()->get('message') }}
-                    </div>
-                @endif
+               
 
             <form action="{{route('vehicle.update',$vehicle->id)}}" method="post">
                 @csrf
-                        @if($errors->any())
-                            @foreach($errors->all() as $err)
-                            <p class="alert alert-danger">{{$err}}</p>
-                            @endforeach
-                        @endif
-
                
                 <a class="btn mb-1 btn-outline-secondary " href="{{route('vehicle.index')}}">Back</a>
                 <h1 class="mt-3 text-center"><strong>Vehicle Edit Form </strong></h1>

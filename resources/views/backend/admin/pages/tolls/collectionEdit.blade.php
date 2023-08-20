@@ -6,12 +6,6 @@
       <div class="card mt-3">
         <div class="card-header">
           <div class="card-body">
-       
-              @if($errors->any())
-                @foreach($errors->all() as $err)
-                <p class="alert alert-danger">{{$err}}</p>
-                @endforeach
-              @endif
               <form action="{{route('collection.update', $collection->id)}}" method="post">
                 @csrf
                 <h1 class="mt-3">Collection Edit Form</h1>

@@ -6,20 +6,11 @@
     <div class="card mt-5 ">
       <div class="card-header">
         <div class="card-body">
-        @if(session()->has('msg'))
-                  
-                  <div class="alert alert-success">
-                          {{ session()->get('msg') }}
-                      </div>
-                  @endif
+       
   
         <form action="{{route('category.store')}}" method="post" enctype="multipart/form-data">
         @csrf
-                @if($errors->any())
-                  @foreach($errors->all() as $err)
-                  <p class="alert alert-danger">{{$err}}</p>
-                  @endforeach
-                @endif
+                
   
         
           <a class="btn btn-outline-secondary " href="{{route('category.index')}}">Back</a>

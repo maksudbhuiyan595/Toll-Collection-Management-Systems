@@ -4,20 +4,8 @@
 <div class="row">
   <div class="col-md-8 offset-md-2 ">
     <div class="card m-3 p-5">
-      
-          @if(session()->has('message'))
-              <div class="alert alert-success">
-                  {{ session()->get('message') }}
-              </div>
-          @endif
 
 <form action="{{route('collection.store')}}" method="post" >
-
-  @if($errors->any())
-    @foreach($errors->all() as $err)
-    <p class="alert alert-danger">{{$err}}</p>
-    @endforeach
-  @endif
 
     @csrf
     <h1 class="mt-3">Create New Toll From</h1>

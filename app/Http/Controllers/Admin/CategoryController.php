@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
@@ -45,10 +46,13 @@ class CategoryController extends Controller
            'category_image' =>$fileName
 
         ]);
-
-        return redirect()->back()->with('msg','Category Successfully Created.');
+        Toastr::success('Successfully Created.', 'Category', ['options']);
+        return redirect()->back();
 
     }
+
+    
+
     public function edit($id)
     {   
         $category=Category::find($id);
@@ -67,14 +71,15 @@ class CategoryController extends Controller
             'category_status'=>$request->status,
             
         ]);
-
-        return redirect()->back()->with('msg','Update Successfully.');
+        Toastr::success('Update Successfully.', 'Category');
+        return redirect()->back();
     }
     public function destroy($id)
     {
        
         Category::destroy($id);
 
+        Toastr::error('Successfully Deleted.', 'Category', ['options']);
         return redirect()->back();
 
     }

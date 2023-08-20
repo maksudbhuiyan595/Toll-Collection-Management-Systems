@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Toll;
 use App\Models\Toll_chart;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class TollController extends Controller
@@ -46,7 +47,8 @@ class TollController extends Controller
          
         ]);
 
-        return redirect()->route('collection.index')->with('message','toll Successfully Created.');
+        Toastr::success('Successfully Created', 'Toll');
+        return redirect()->back();
 
     }
 
@@ -70,12 +72,15 @@ class TollController extends Controller
             'toll_category_id'      =>$request->toll_category_id,
             'toll_chart_id'         =>$request->toll_chart_id,
         ]);
+        Toastr::success('Successfully Updated', 'Toll ');
         return redirect()->route('collection.index');
     } 
 
     public function destroy($id)
     {
         Toll::destroy($id);
+
+        Toastr::error('Successfully Deleted', 'Toll');
         return redirect()->back();
     }
 

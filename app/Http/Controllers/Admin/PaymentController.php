@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\Toll;
 use App\Models\Toll_chart;
 use App\Models\Vehicle;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -51,7 +52,8 @@ class PaymentController extends Controller
             'pay_toll_id'       =>$request->pay_toll_id,
         ]);
 
-        return redirect()->route('payment.index');
+        Toastr::success('Successfully Created', 'Payment');
+        return redirect()->back();
     }
    
     public function show($id){
@@ -94,6 +96,7 @@ class PaymentController extends Controller
             'pay_toll_id'       =>$request->pay_toll_id,
         ]);
 
+        Toastr::success('Successfully Updated', 'Payment');
         return redirect()->route('payment.index');
     }
 
@@ -101,6 +104,8 @@ class PaymentController extends Controller
     {
         // dd($id);
         Payment::destroy($id);
+        
+        Toastr::error('Successfully Deleted', 'Payment');
         return redirect()->back();
     }
     

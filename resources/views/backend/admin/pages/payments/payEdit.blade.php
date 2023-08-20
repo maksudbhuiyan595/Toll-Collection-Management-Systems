@@ -2,11 +2,6 @@
 
 @section('content')
 
-      @if(session()->has('message'))
-          <div class="alert alert-success">
-              {{ session()->get('message') }}
-          </div>
-      @endif
 
 <div class="container">
   <div class="card mt-3">
@@ -15,11 +10,6 @@
       <form action="{{route('payment.update',$payment->id)}}" method="post">
     @csrf
 
-      @if($errors->any())
-        @foreach($errors->all() as $err)
-        <p class="alert alert-danger">{{$err}}</p>
-        @endforeach
-      @endif
 
   
     <h1 class="mt-3">Create Edit Form</h1>

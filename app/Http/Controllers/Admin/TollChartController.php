@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Toll_chart;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class TollChartController extends Controller
@@ -46,8 +47,8 @@ class TollChartController extends Controller
         'image'         =>$fileName
         
        ]);
-       
-       return redirect()->route('toll-chart.index')->with('successfully created ');
+       Toastr::success('Successfully Created', 'Toll Chart');
+       return redirect()->back();
     }
     public function edit($id)
     {
@@ -65,11 +66,14 @@ class TollChartController extends Controller
         'toll_price'    =>$request->toll_price,
 
         ]);
-        return redirect()->back()->with('msg','update successfully');
+        Toastr::success('Successfully Updated', 'Toll Chart');
+        return redirect()->back();
     }
     public function destroy($id)
     {
         Toll_chart::destroy($id);
+
+        Toastr::error('Successfully Deleted', 'Toll Chart');
         return redirect()->back();
     }
     public function tollChartReport()

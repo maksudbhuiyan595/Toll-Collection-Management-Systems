@@ -10,22 +10,7 @@
       <div class="card-body">
         <h2 class="text-center"><strong>Create payments report</strong></h2>
         <hr class="mb-3">
-
-          @if(session()->has('msg'))
-
-            <div class="alert alert-success">
-              {{ session()->get('msg') }}
-           </div>
-           @endif
-
           <form action="{{route('payment.report.search')}}" method="get">
-
-              @if($errors->any())
-                @foreach($errors->all() as $err)
-                  <p class="alert alert-danger">{{$err}}</p>
-                @endforeach
-              @endif
-
               @csrf
 
             <div class="row">

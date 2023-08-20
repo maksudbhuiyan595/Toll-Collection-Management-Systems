@@ -6,22 +6,10 @@
     <div class="card mt-5">
         <div class="card-header">
           <div class="card-body">
-          @if(session()->has('message'))
-            <div class="alert alert-success">
-                {{ session()->get('message') }}
-            </div>
-        @endif
+         
 
               <form action="{{route('toll-chart.store')}}" method="post" enctype="multipart/form-data">
                   @csrf
-
-                        @if($errors->any())
-                          @foreach($errors->all() as $err)
-                          <p class="alert alert-danger">{{$err}}</p>
-                          @endforeach
-                        @endif
-
-                
                   <a class="btn btn-outline-secondary" href="{{route('toll-chart.index')}}">Back</a>
                   <h1 class="text-center"><strong>Create New Toll Chart</strong></h1>
                   <hr>

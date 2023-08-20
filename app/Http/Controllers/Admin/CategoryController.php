@@ -51,7 +51,11 @@ class CategoryController extends Controller
 
     }
 
-    
+    public function show($id){
+
+        $catData=Category::find($id);
+        return view('backend.amdin.pages.categories.categoryShow', compact('catData'));
+    }
 
     public function edit($id)
     {   

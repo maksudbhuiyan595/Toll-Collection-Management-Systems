@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class TollChartController extends Controller
 {
     public function index()
-    {   
+    {
         $tollCharts=Toll_chart::with('TollData')->paginate(10);
         // dd($tollCharts);
         return view('backend.admin.pages.tollCharts.tollChartIndex',compact('tollCharts'));
@@ -29,7 +29,7 @@ class TollChartController extends Controller
             'toll_image'      => 'required'
         ]);
 
-        // dd($request->all());
+         //dd($request->all());
 
         $fileName=null;
         if($request->hasFile('toll_image')){
@@ -40,13 +40,20 @@ class TollChartController extends Controller
 
        //dd($fileName);
 
-       Toll_chart::create([
+
+
+       $tollChart = Toll_chart::create([
 
         'category_id'   =>$request->category_id,
         'toll_price'    =>$request->toll_price,
-        'image'         =>$fileName
-        
+        'image'         =>$fileName,
+
        ]);
+
+       $totalTollPrice = Toll_chart::sum('toll_price');
+       
+       $tollChart->update(['total_toll_price' => $totalTollPrice]);
+
        Toastr::success('Successfully Created', 'Toll Chart');
        return redirect()->back();
     }
@@ -89,12 +96,12 @@ class TollChartController extends Controller
         ]);
         $form=$request->form_date;
         $to= $request->to_date;
-       
-        
+
+
         $tollChartReports=Toll_chart::whereBetween('created_at',[$form,$to])->get();
 
         // dd($reportCategory);
-        
+
         return view('backend.admin.pages.tollCharts.tollChartReport',compact('tollChartReports'));
     }
 }

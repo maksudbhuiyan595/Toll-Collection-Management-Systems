@@ -6,7 +6,7 @@
     <div class="card mt-5">
         <div class="card-header">
           <div class="card-body">
-         
+
 
               <form action="{{route('toll-chart.store')}}" method="post" enctype="multipart/form-data">
                   @csrf
@@ -24,6 +24,11 @@
                   </select>
 
                 </div>
+                
+                <div>
+                    <input type="hidden" name="total_toll_price">
+                </div>
+
                 <div class="mb-3">
                   <label class="form-label"><strong>Toll:</strong></label>
                   <input type="number" class="form-control"name="toll_price"  placeholder="Entet toll amount" required>
@@ -39,7 +44,7 @@
               </form>
           </div>
         </div>
-      
+
     </div>
   </div>
  </div>

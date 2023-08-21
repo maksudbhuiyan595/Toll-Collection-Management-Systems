@@ -15,13 +15,22 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
     public function index()
-    {   
-        $paymentData=Payment::with(['payCategory', 'payVehicle', 'payChart','payCustomer','payToll'])->paginate(10);
+    {
+        $paymentData = Payment::with(['payCategory', 'payVehicle', 'payChart', 'payCustomer', 'payToll'])->paginate(10);
+
+        // Calculate the total toll price
+        $totalTollPrice = 0; // Initialize the total
+
+        foreach ($paymentData as $payment) {
+            $totalTollPrice += $payment->payChart->toll_price;
+        }
+
+
     //    dd($paymentData);
         return view('backend.admin.pages.payments.payIndex', compact('paymentData'));
     }
     public function create()
-    {   
+    {
         $payTolls=Toll::all();
         $payCustomers=Customer::all();
         $payTollCharts=Toll_chart::all();
@@ -42,7 +51,7 @@ class PaymentController extends Controller
             'pay_customer_id'   => 'required',
             'pay_toll_id'       => 'required',
         ]);
-        
+
         Payment::create([
             'date'              =>$request->date,
             'pay_category_id'   =>$request->pay_category_id,
@@ -55,13 +64,13 @@ class PaymentController extends Controller
         Toastr::success('Successfully Created', 'Payment');
         return redirect()->back();
     }
-   
+
     public function show($id){
-        
+
         $payment=Payment::find($id);
         // dd($payment);
         return view('backend.admin.pages.payments.payShow',compact('payment'));
-        
+
     }
 
     public function edit($id)
@@ -85,7 +94,7 @@ class PaymentController extends Controller
             'pay_customer_id'   => 'required',
             'pay_toll_id'       => 'required',
         ]);
-        
+
         $payment=Payment::find($id);
         $payment->update([
             'date'              =>$request->date,
@@ -104,11 +113,11 @@ class PaymentController extends Controller
     {
         // dd($id);
         Payment::destroy($id);
-        
+
         Toastr::error('Successfully Deleted', 'Payment');
         return redirect()->back();
     }
-    
+
     public function paymentReport()
     {
         return view('backend.admin.pages.payments.payReport');
@@ -123,13 +132,13 @@ class PaymentController extends Controller
         ]);
         $form=$request->form_date;
         $to= $request->to_date;
-       
-        
+
+
         $paymentReports=Payment::whereBetween('created_at',[$form,$to])->get();
 
         // dd($reportCategory);
-        
+
         return view('backend.admin.pages.payments.payReport',compact('paymentReports'));
 }
-   
+
 }

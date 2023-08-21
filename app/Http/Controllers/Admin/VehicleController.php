@@ -50,6 +50,12 @@ class VehicleController extends Controller
         return redirect()->route('vehicle.index')->with('message','Vehicle Successfully Created.');
 
     }
+    public function show($id){
+
+        $vehicleData= Vehicle::find($id);
+        return view('backend.admin.pages.vehicles.vehicleShow', compact('vehicleData'));
+    }
+
     public function edit($id)
     {
         $vehicle=Vehicle::find($id);

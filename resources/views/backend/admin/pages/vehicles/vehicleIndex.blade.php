@@ -31,8 +31,10 @@
                     height:60px;"
          src="{{url('/uploads/categories/'.$value->vehicleData->category_image)}}" alt="image">
       <td>
+
+        <a class="btn btn-info text-white" href="{{Route('vehicle.show',$value->id)}}">Show</a>
         <a class="btn btn-warning text-white" href="{{Route('vehicle.edit',$value->id)}}">Edit</a>
-        <a class="btn btn-danger" href="{{Route('vehicle.destroy',$value->id)}}">Delete</a>
+        <a class="btn btn-danger text-white" href="{{Route('vehicle.destroy',$value->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach

@@ -18,6 +18,7 @@ class PaymentController extends Controller
     {   
         $paymentData=Payment::with(['payCategory', 'payVehicle', 'payChart','payCustomer','payToll'])->paginate(10);
     //    dd($paymentData);
+    
         return view('backend.admin.pages.payments.payIndex', compact('paymentData'));
     }
     public function create()

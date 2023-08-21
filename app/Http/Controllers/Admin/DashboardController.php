@@ -14,8 +14,8 @@ class DashboardController extends Controller
 
         $totalVehicle= Vehicle::count();
         $totalCategory= Category::count();
-        $totalPayment=Payment::where('pay_toll_id')->sum('toll_price');
-        return view('backend.admin.pages.dashboard', compact('totalVehicle','totalCategory','totalPayment'));
+     
+        return view('backend.admin.pages.dashboard', compact('totalVehicle','totalCategory'));
     }
  
 }

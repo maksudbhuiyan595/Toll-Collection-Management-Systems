@@ -44,19 +44,27 @@
 
     
         <div class="container">
-            <h2 class="mb-3" style="text-align: center">Category Information</h2>
+            <h2 class="mb-3" style="text-align: center">Customer Information</h2>
             <hr>
             <div class="data-item">
-                <span class="data-label">Category Name:</span>
-                <span class="data-value">{{$catData->category_name}}</span>
+                <span class="data-label">Customer Name:</span>
+                <span class="data-value">{{$customerData->customer_name}}</span>
             </div>
             <div class="data-item">
-                <span class="data-label">Category Status:</span>
-                <span class="data-value">{{$catData->category_status}}</span>
+                <span class="data-label">Vehicle Name:</span>
+                <span class="data-value">{{$customerData->customerData->vehicle_name}}</span>
             </div>
             <div class="data-item">
-                <span class="data-label">Category Image:</span>
-                <span class="data-value"><img style="width: 100px; height:100px;" src="{{url('/uploads/categories',$catData->category_image)}}" alt=""></span>
+                <span class="data-label">Driving Licence:</span>
+                <span class="data-value">{{$customerData->driving_licence}}</span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">Phone Number:</span>
+                <span class="data-value">{{$customerData->customer_phone}}</span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">Customer Address:</span>
+                <span class="data-value">{{$customerData->customer_address}}</span>
             </div>
            
        

@@ -32,7 +32,7 @@
         <div class="card bg-success text-white mb-4">
             <div class="card-body text-center"><strong style="font-size: 18px;">Total Payment Collection</strong></div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-            <h1 class="text-center">{{$totalPayment}}</h1>
+            <h1 class="text-center"></h1>
                
             </div>
         </div>

@@ -16,7 +16,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $paymentData = Payment::with(['payCategory', 'payVehicle', 'payChart', 'payCustomer', 'payToll'])->paginate(10);
+        $paymentData = Payment::with(['payCategory', 'payVehicle', 'payChart', 'payCustomer', 'payToll'])->paginate(100);
 
         // Calculate the total toll price
         $totalTollPrice = 0; // Initialize the total
@@ -74,50 +74,7 @@ class PaymentController extends Controller
 
     }
 
-    public function edit($id)
-    {
-        $payTolls=Toll::all();
-        $payCustomers=Customer::all();
-        $payTollCharts=Toll_chart::all();
-        $payVehicles=Vehicle::all();
-        $payCategories=Category::all();
-        $payment=Payment::find($id);
-
-        return view('backend.admin.pages.payments.payEdit',compact('payment','payCategories','payVehicles','payTollCharts','payCustomers','payTolls'));
-    }
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'date'              =>'required',
-            'pay_category_id'   => 'required',
-            'pay_vehicle_id'    => 'required',
-            'pay_chart_id'      => 'required',
-            'pay_customer_id'   => 'required',
-            'pay_toll_id'       => 'required',
-        ]);
-
-        $payment=Payment::find($id);
-        $payment->update([
-            'date'              =>$request->date,
-            'pay_category_id'   =>$request->pay_category_id,
-            'pay_vehicle_id'    =>$request->pay_vehicle_id,
-            'pay_chart_id'      =>$request->pay_chart_id,
-            'pay_customer_id'   =>$request->pay_customer_id,
-            'pay_toll_id'       =>$request->pay_toll_id,
-        ]);
-
-        Toastr::success('Successfully Updated', 'Payment');
-        return redirect()->route('payment.index');
-    }
-
-    public function destroy($id)
-    {
-        // dd($id);
-        Payment::destroy($id);
-
-        Toastr::error('Successfully Deleted', 'Payment');
-        return redirect()->back();
-    }
+  
 
     public function paymentReport()
     {

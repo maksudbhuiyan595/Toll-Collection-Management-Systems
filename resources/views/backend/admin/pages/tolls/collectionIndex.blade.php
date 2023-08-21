@@ -31,7 +31,8 @@
       <td>{{$value->tollCategory->category_name}}</td>
       <td>{{$value->tollChart->toll_price}}</td>
       <td>
-        <a class="btn btn-info" href="{{route('collection.edit',$value->id)}}">Edit</a>
+        <a class="btn btn-info" href="{{route('collection.show',$value->id)}}">Show</a>
+        <a class="btn btn-warning" href="{{route('collection.edit',$value->id)}}">Edit</a>
         <a class="btn btn-danger" href="{{route('collection.destroy',$value->id)}}">Delete</a>
       </td>
       

@@ -85,6 +85,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/collection-index',[TollController::class,'index'])->name('collection.index');
     Route::get('/collection-create',[TollController::class,'create'])->name('collection.create');
     Route::post('/collection-store',[TollController::class,'store'])->name('collection.store');
+    Route::get('/collection-show/{id}',[TollController::class,'show'])->name('collection.show');
     Route::get('/collection-edit/{id}',[TollController::class,'edit'])->name('collection.edit');
     Route::post('/collection-update/{id}',[TollController::class,'update'])->name('collection.update');
     Route::get('/collection-delete/{id}',[TollController::class,'destroy'])->name('collection.destroy'); 
@@ -94,9 +95,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/payment-create',[PaymentController::class,'create'])->name('payment.create');
     Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
     Route::get('/payment-show/{id}',[PaymentController::class,'show'])->name('payment.show');
-    Route::get('/payment-edit/{id}',[PaymentController::class,'edit'])->name('payment.edit');
-    Route::post('/payment-update/{id}',[PaymentController::class,'update'])->name('payment.update');
-    Route::get('/payment-delete/{id}',[PaymentController::class,'destroy'])->name('payment.destroy');
    
     /* Report section
            --/ Category Report--*/

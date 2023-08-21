@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 
-
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Toll;
@@ -50,6 +49,13 @@ class TollController extends Controller
         Toastr::success('Successfully Created', 'Toll');
         return redirect()->back();
 
+    }
+
+    public function show($id){
+
+        $tollData= Toll::find($id);
+        // dd($tollShow);
+        return view('backend.admin.pages.tolls.collectionShow',compact('tollData'));
     }
 
     public function edit($id)

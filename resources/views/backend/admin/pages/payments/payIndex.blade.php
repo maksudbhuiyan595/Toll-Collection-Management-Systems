@@ -44,9 +44,7 @@
       <td>{{ $value->payCustomer->customer_address }}</td>
       <td>{{ $value->payChart->toll_price }}</td>
       <td>
-        <a class="btn btn-info" href="{{ route('payment.show', $value->id) }}">Show</a>
-        <a class="btn btn-warning" href="{{ route('payment.edit', $value->id) }}">Edit</a>
-        <a class="btn btn-danger" href="{{ route('payment.destroy', $value->id) }}">Delete</a>
+        <a class="btn btn-info text-white" href="{{ route('payment.show', $value->id) }}">View</a>
       </td>
     </tr>
 

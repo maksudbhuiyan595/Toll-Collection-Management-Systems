@@ -4,7 +4,7 @@
 
 <h1 class="mt-4 text-center"><strong>Toll Collection Payment Lists</strong></h1>
 <hr>
-<a class="btn btn-outline-primary" href="{{route('payment.create')}}">+Add New</a>
+<a class="btn btn-outline-primary" href="{{ route('payment.create') }}">+Add New</a>
 
 <table class="table table-hover table-striped">
   <thead>
@@ -25,31 +25,43 @@
     </tr>
   </thead>
   <tbody>
-  
-    @foreach($paymentData as $key=>$value)
+    @php
+    $totalTollPrice = 0; // Initialize the total
+    @endphp
+
+    @foreach($paymentData as $key => $value)
     <tr>
-      <th scope="row">{{$key+1}}</th>
-      <td>{{$value->date}}</td>
-      <td>{{$value->collection_status}}</td>
-      <td>{{$value->payToll->toll_name}}</td>
-      <td>{{$value->payCategory->category_name}}</td>
-      <td>{{$value->payVehicle->vehicle_name}}</td>
-      <td>{{$value->payVehicle->plade_number}}</td>
-      <td>{{$value->payCustomer->customer_name}}</td>
-      <td>{{$value->payCustomer->driving_licence}}</td>
-      <td>{{$value->payCustomer->customer_phone}}</td>
-      <td>{{$value->payCustomer->customer_address}}</td>
-      <td>{{$value->payChart->toll_price}}</td>
+      <th scope="row">{{ $key + 1 }}</th>
+      <td>{{ $value->date }}</td>
+      <td>{{ $value->collection_status }}</td>
+      <td>{{ $value->payToll->toll_name }}</td>
+      <td>{{ $value->payCategory->category_name }}</td>
+      <td>{{ $value->payVehicle->vehicle_name }}</td>
+      <td>{{ $value->payVehicle->plade_number }}</td>
+      <td>{{ $value->payCustomer->customer_name }}</td>
+      <td>{{ $value->payCustomer->driving_licence }}</td>
+      <td>{{ $value->payCustomer->customer_phone }}</td>
+      <td>{{ $value->payCustomer->customer_address }}</td>
+      <td>{{ $value->payChart->toll_price }}</td>
       <td>
-        <a class="btn btn-info" href="{{route('payment.show',$value->id)}}">Show</a>
-        <a class="btn btn-warning" href="{{route('payment.edit',$value->id)}}">Edit</a>
-        <a class="btn btn-danger" href="{{route('payment.destroy',$value->id)}}">Delete</a>
-      
+        <a class="btn btn-info" href="{{ route('payment.show', $value->id) }}">Show</a>
+        <a class="btn btn-warning" href="{{ route('payment.edit', $value->id) }}">Edit</a>
+        <a class="btn btn-danger" href="{{ route('payment.destroy', $value->id) }}">Delete</a>
       </td>
     </tr>
+
+    @php
+    $totalTollPrice += $value->payChart->toll_price; // Add toll_price to total
+    @endphp
     @endforeach
+
+    <tr>
+      <th scope="col" colspan="11" class="text-end">Total:</th>
+      <th scope="col">{{ $totalTollPrice }}</th>
+      <th scope="col"></th>
+    </tr>
   </tbody>
 </table>
-{{$paymentData->links()}} 
+{{ $paymentData->links() }}
 
 @endsection

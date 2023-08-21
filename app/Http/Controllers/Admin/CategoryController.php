@@ -46,6 +46,7 @@ class CategoryController extends Controller
            'category_image' =>$fileName
 
         ]);
+        
         Toastr::success('Successfully Created.', 'Category', ['options']);
         return redirect()->back();
 
@@ -54,7 +55,7 @@ class CategoryController extends Controller
     public function show($id){
 
         $catData=Category::find($id);
-        return view('backend.amdin.pages.categories.categoryShow', compact('catData'));
+        return view('backend.admin.pages.categories.categoryShow', compact('catData'));
     }
 
     public function edit($id)

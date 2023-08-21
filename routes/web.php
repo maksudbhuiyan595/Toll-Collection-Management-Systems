@@ -53,18 +53,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::post('/category-update/{id}',[CategoryController::class,'update'])->name('category.update');
     Route::get('/category-destroy/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
    
-     /* toll-ChartController  */
-    Route::get('/toll-chart-index',[TollChartController::class,'index'])->name('toll-chart.index');
-    Route::get('/toll-chart-create',[TollChartController::class,'create'])->name('toll-chart.create');
-    Route::post('/toll-chart-store',[TollChartController::class,'store'])->name('toll-chart.store');
-    Route::get('/toll-chart-edit/{id}',[TollChartController::class,'edit'])->name('toll-chart.edit');
-    Route::post('/toll-chart-update/{id}',[TollChartController::class,'update'])->name('toll-chart.update');
-    Route::get('/toll-chart-destroy/{id}',[TollChartController::class,'destroy'])->name('toll-chart.destroy');
-
+   
          /* vehicleController  */
     Route::get('/vehicle-index',[VehicleController::class,'index'])->name('vehicle.index');
     Route::get('/vehicle-create',[VehicleController::class,'create'])->name('vehicle.create');
     Route::post('/vehicle-store',[VehicleController::class,'store'])->name('vehicle.store');
+    Route::get('/vehicle-show/{id}',[VehicleController::class,'show'])->name('vehicle.show');
     Route::get('/vehicle-edit/{id}',[VehicleController::class,'edit'])->name('vehicle.edit');
     Route::post('/vehicle-update/{id}',[VehicleController::class,'update'])->name('vehicle.update');
     Route::get('/vehicle-destroy/{id}',[VehicleController::class,'destroy'])->name('vehicle.destroy'); 
@@ -73,9 +67,19 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('/customer-index',[CustomerController::class,'index'])->name('customer.index');
     Route::get('/customer-create',[CustomerController::class,'create'])->name('customer.create');
     Route::post('/customer-store',[CustomerController::class,'store'])->name('customer.store');
+    Route::get('/customer-show/{id}',[CustomerController::class,'show'])->name('customer.show');
     Route::get('/customer-edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
     Route::post('/customer-update/{id}',[CustomerController::class,'update'])->name('customer.update');
     Route::get('/customer-destroy/{id}',[CustomerController::class,'destroy'])->name('customer.destroy');
+
+      /* toll-ChartController  */
+    Route::get('/toll-chart-index',[TollChartController::class,'index'])->name('toll-chart.index');
+    Route::get('/toll-chart-create',[TollChartController::class,'create'])->name('toll-chart.create');
+    Route::post('/toll-chart-store',[TollChartController::class,'store'])->name('toll-chart.store');
+    Route::get('/toll-chart-edit/{id}',[TollChartController::class,'edit'])->name('toll-chart.edit');
+    Route::post('/toll-chart-update/{id}',[TollChartController::class,'update'])->name('toll-chart.update');
+    Route::get('/toll-chart-destroy/{id}',[TollChartController::class,'destroy'])->name('toll-chart.destroy');
+  
 
         /* TollController  */
     Route::get('/collection-index',[TollController::class,'index'])->name('collection.index');

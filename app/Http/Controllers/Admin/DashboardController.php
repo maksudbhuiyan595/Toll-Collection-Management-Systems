@@ -33,6 +33,7 @@ class DashboardController extends Controller
     $totalTollPrice = 0;
     $twentyFourHourTotal = 0;
 
+
     foreach ($paymentData as $payment) {
         $paymentDate = $payment->date;
         $totalTollPrice += $payment->payChart->toll_price;

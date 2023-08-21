@@ -12,7 +12,9 @@ class TollChartController extends Controller
 {
     public function index()
     {
-        $tollCharts=Toll_chart::with('TollData')->paginate(10);
+        $tollCharts = Toll_chart::with('TollData')
+                            ->orderByDesc('created_at') // Order by date in descending order
+                            ->paginate(10);
         // dd($tollCharts);
         return view('backend.admin.pages.tollCharts.tollChartIndex',compact('tollCharts'));
     }
@@ -51,7 +53,7 @@ class TollChartController extends Controller
        ]);
 
        $totalTollPrice = Toll_chart::sum('toll_price');
-       
+
        $tollChart->update(['total_toll_price' => $totalTollPrice]);
 
        Toastr::success('Successfully Created', 'Toll Chart');

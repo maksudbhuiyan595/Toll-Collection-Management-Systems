@@ -44,19 +44,24 @@
 
     
         <div class="container">
-            <h2 class="mb-3" style="text-align: center">Category Information</h2>
+            <h2 class="mb-3" style="text-align: center">Vehicle Information</h2>
             <hr>
             <div class="data-item">
-                <span class="data-label">Category Name:</span>
-                <span class="data-value">{{$catData->category_name}}</span>
+                <span class="data-label">Vehicle Name:</span>
+                <span class="data-value">{{$vehicleData->vehicleData->category_name}}</span>
             </div>
             <div class="data-item">
-                <span class="data-label">Category Status:</span>
-                <span class="data-value">{{$catData->category_status}}</span>
+                <span class="data-label">Vehicle Name:</span>
+                <span class="data-value">{{$vehicleData->vehicle_name}}</span>
             </div>
             <div class="data-item">
-                <span class="data-label">Category Image:</span>
-                <span class="data-value"><img style="width: 100px; height:100px;" src="{{url('/uploads/categories',$catData->category_image)}}" alt=""></span>
+                <span class="data-label">Plade Number:</span>
+                <span class="data-value">{{$vehicleData->plade_number}}</span>
+            </div>
+           
+            <div class="data-item">
+                <span class="data-label">Vehicle Image:</span>
+                <span class="data-value"><img style="width: 100px; height:100px;" src="{{url('/uploads/vehicles',$vehicleData->vehicle_image)}}" alt=""></span>
             </div>
            
        

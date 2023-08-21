@@ -27,8 +27,9 @@
       <td>{{$value->customer_phone}}</td>
       <td>{{$value->customer_address}}</td>
       <td>
-        <a class="btn btn-warning" href="{{route('customer.edit',$value->id)}}">Edit</a>
-        <a class="btn btn-danger" href="{{route('customer.destroy',$value->id)}}">Delete</a>
+        <a class="btn btn-info text-white" href="{{route('customer.show',$value->id)}}">Show</a>
+        <a class="btn btn-warning text-white" href="{{route('customer.edit',$value->id)}}">Edit</a>
+        <a class="btn btn-danger text-white" href="{{route('customer.destroy',$value->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach

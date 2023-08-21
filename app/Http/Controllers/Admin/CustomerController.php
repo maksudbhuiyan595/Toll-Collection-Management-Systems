@@ -41,8 +41,13 @@ class CustomerController extends Controller
 
         Toastr::success('Successfully Created', 'Customer');
         return redirect()->back();
-
     } 
+
+    public function show($id){
+        $customerData= Customer::find($id);
+        return view('backend.admin.pages.customers.customerShow',compact('customerData'));
+    }
+
     public function edit($id)
     {
         $names=Vehicle::all();

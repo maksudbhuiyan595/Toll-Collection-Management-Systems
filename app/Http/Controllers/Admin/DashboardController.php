@@ -52,6 +52,7 @@ class DashboardController extends Controller
         if ($paymentDate instanceof Carbon && $paymentDate->year === $currentDate->year) {
             $yearlyTotal += $payment->payChart->toll_price;
         }
+
     }
 
     $totalVehicle = Vehicle::count();

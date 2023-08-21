@@ -27,6 +27,7 @@ class PaymentController extends Controller
 
 
     //    dd($paymentData);
+    
         return view('backend.admin.pages.payments.payIndex', compact('paymentData'));
     }
     public function create()

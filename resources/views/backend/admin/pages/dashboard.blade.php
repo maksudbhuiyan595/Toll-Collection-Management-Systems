@@ -28,8 +28,10 @@
         <div class="card bg-info text-white mb-4">
             <div class="card-body text-center"><strong style="font-size: 18px;">Total Payment Collection</strong></div>
             <div class="card-footer d-flex align-items-center justify-content-between">
+
                 <a class="small text-white stretched-link" href="#">{{ $totalTollPrice }} Tk.</a>
                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+
             </div>
         </div>
     </div>

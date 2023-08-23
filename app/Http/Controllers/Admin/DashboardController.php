@@ -56,7 +56,7 @@ class DashboardController extends Controller
 
     }
 
-    $totalVehicle = Vehicle::count();
+    $totalVehicle = Payment::count();
     $totalCategory = Category::count();
 
     return view('backend.admin.pages.dashboard', compact(

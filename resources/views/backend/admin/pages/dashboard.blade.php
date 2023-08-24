@@ -39,8 +39,8 @@
         <div class="card bg-info text-white mb-4">
             <div class="card-body text-center"><strong style="font-size: 18px;">Today's Payment Collection</strong></div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                 <a class="small text-white stretched-link" href="#">{{ $dailyTotal }} Tk</a>
-                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                 <strong class="small text-white stretched-link" href="#">{{ $totalDailyCount }}Tk <br>Last updated at: <br>{{ $lastUpdatedTimestamp->diffForHumans() }}</strong>
+                <div class="small text-white"></div>
             </div>
         </div>
     </div>

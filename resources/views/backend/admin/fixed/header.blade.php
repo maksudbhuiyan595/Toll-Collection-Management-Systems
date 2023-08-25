@@ -21,8 +21,9 @@
 
                 {{auth()->user()->name}}
 
-                </a></li>
-                <li><a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{route('profile.show')}}">Profile</a></li>
+ 
+                
                 
                 <li><hr class="dropdown-divider" /></li>
 

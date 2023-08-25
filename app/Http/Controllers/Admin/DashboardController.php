@@ -58,6 +58,7 @@ class DashboardController extends Controller
 
     $totalVehicle = Payment::count();
     $totalCategory = Category::count();
+    $today=Payment::count();
 
     return view('backend.admin.pages.dashboard', compact(
         'totalVehicle',
@@ -67,7 +68,9 @@ class DashboardController extends Controller
         'yearlyTotal',
         'totalTollPrice',
         'currentDate',
-        'twentyFourHourTotal'
+        'twentyFourHourTotal',
+        'today'
+        
     ));
 }
 

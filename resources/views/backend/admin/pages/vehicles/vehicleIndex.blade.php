@@ -4,6 +4,7 @@
 
 
 <h1 class="mt-4 text-center"><strong>Toll Collection of Vehicle Lists</strong></h1>
+<hr>
 <a class="btn btn-outline-primary" href="{{route('vehicle.create')}}">+Add New</a>
 
 <table class="table table-hover table-striped">

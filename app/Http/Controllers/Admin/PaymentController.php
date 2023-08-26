@@ -16,7 +16,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $paymentData = Payment::with(['payCategory', 'payVehicle', 'payChart', 'payCustomer', 'payToll'])->paginate(100);
+        $paymentData = Payment::with(['payCategory', 'payVehicle', 'payChart', 'payCustomer', 'payToll'])->orderByDesc('created_at')->paginate(100);
 
         // Calculate the total toll price
         $totalTollPrice = 0; // Initialize the total

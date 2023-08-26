@@ -7,8 +7,8 @@
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="submit" name="search"><i class="fas fa-search"></i></button>
+            <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="submit" name="search"><i class="fas fa-search"></i></button> -->
         </div>
     </form>
     <!-- Navbar-->
@@ -21,8 +21,9 @@
 
                 {{auth()->user()->name}}
 
-                </a></li>
-                <li><a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{route('profile.show')}}">Profile</a></li>
+ 
+                
                 
                 <li><hr class="dropdown-divider" /></li>
 

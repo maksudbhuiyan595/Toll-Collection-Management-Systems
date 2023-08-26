@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-8 offset-md-2 ">
-    <div class="card m-3 p-5">
+    <div class="card  m-3 p-5">
 
          
 
@@ -35,8 +35,9 @@
     <label class="form-label">Customer Address</label>
     <input type="text" class="form-control"name="customer_address">
   </div>
-  <button type="submit" class="btn btn-lg btn-outline-success">Submit</button>
-</form>
+      <div class="d-grid gap-2">
+            <button class="btn btn-outline-success" type="submit">Submit</button>
+          </div>
 
     </div>
   </div>

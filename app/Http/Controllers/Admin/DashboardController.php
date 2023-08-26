@@ -21,7 +21,7 @@ class DashboardController extends Controller
                          ->get();
 
     $totalTollPrice = 0;
-    $totalDailyCount = 0; // Initialize totalDailyCount with 0
+
 
     foreach ($paymentData as $payment) {
         $paymentDate = $payment->date;
@@ -29,8 +29,9 @@ class DashboardController extends Controller
         $totalDailyCount += $payment->daily_total; // Add daily_total values
     }
 
-    $totalVehicle = Vehicle::count();
+    $totalVehicle = Payment::count();
     $totalCategory = Category::count();
+    $today=Payment::count();
 
     $latestPayment = Payment::latest()->first();
 
@@ -54,8 +55,7 @@ class DashboardController extends Controller
         'monthlyTotal',
         'yearlyTotal',
         'totalTollPrice',
-        'totalDailyCount',
-        'lastUpdatedTimestamp'
+
     ));
 }
 

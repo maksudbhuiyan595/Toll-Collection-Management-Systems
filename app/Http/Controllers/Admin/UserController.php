@@ -40,31 +40,25 @@ class UserController extends Controller
        
     }
 
-    public function profileEdit(){
-       
-        
-        // $user= User::find($id);
-        return view('backend.admin.pages.profiles.index');
+    public function profileShow(){
+
+       $user=User::all();
+        return view('backend.admin.pages.profiles.index',compact('user'));
     }
-   /*  public function profileUpdate(Request $request,$id ){
-        
-        $request->validate([
 
-            'user_name'=>'required',
-            'user_email'=>'required',
-            'change_pass'=>'required',
-        ]);
-        
-        $user=User::find($id);
-        User::create([
-
+    public function updateprofile(Request $request,$id){
+        $user= User::find($id);
+        $user->update([
             'name'=>$request->user_name,
             'email'=>$request->user_email,
-            'password'=>$request->change_pass,
+            'password'=>$request->change_pass
         ]);
-        
-        return redirect()->back();
-    } */
+
+        Toastr::success('Update successfully');
+        return redirect()->route('profile.show');
+
+    }
+   
     public function logout(){
 
         auth::logout();

@@ -73,7 +73,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{url('')}}" alt="image" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>{{auth()->user()->name}}</h4>
                       <p class="text-secondary mb-1">{{auth()->user()->email}}</p>
@@ -89,7 +89,12 @@
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">
-                  <form action="" method="post">
+                    <h2 class="text-center"><strong>Update Profile</strong></h2>
+                    <hr>
+                  <form action="{{route('updateprofile',auth()->user()->id)}}" method="post">
+                  @method('put')
+                    @csrf
+                    
                             <div class="mb-3">
                             <label for="">User Name:</label>
                             <input type="text" class="form-control" name="user_name" value="{{auth()->user()->name}}" placeholder="user name">
@@ -104,7 +109,7 @@
                             </div> -->
                             <div class="mb-3">
                             <label for="">Change Password</label>
-                            <input type="password" class="form-control" name="change_pass" value="{{auth()->user()->password}}" placeholder="password">
+                            <input type="password" class="form-control" name="change_pass"  placeholder="password">
                             </div>
                             <button type="submit" class="btn btn-success">Update</button>
                         </form>

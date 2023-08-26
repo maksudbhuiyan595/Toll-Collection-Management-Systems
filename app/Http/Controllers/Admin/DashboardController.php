@@ -26,7 +26,7 @@ class DashboardController extends Controller
     foreach ($paymentData as $payment) {
         $paymentDate = $payment->date;
         $totalTollPrice += $payment->payChart->toll_price;
-        
+
     }
 
     $totalVehicle = Payment::count();
@@ -57,6 +57,8 @@ class DashboardController extends Controller
         'monthlyTotal',
         'yearlyTotal',
         'totalTollPrice',
+        'totalDailyCount',
+        'lastUpdatedTimestamp'
 
     ));
 }

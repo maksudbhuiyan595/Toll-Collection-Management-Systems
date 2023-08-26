@@ -49,6 +49,8 @@ class DashboardController extends Controller
 
 
     return view('backend.admin.pages.dashboard', compact(
+
+        
         'totalVehicle',
         'totalCategory',
         'monthlyTotal',

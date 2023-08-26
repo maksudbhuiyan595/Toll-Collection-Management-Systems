@@ -21,7 +21,7 @@
                 @foreach ($payTolls as $value )
                 <option value="{{$value->id}}">{{$value->toll_name}}</option>
                 @endforeach
-                
+
               </select>
           </div>
           <div class="mb-3">
@@ -30,7 +30,7 @@
                 @foreach ($payCategories as $value )
                 <option value="{{$value->id}}">{{$value->category_name}}</option>
                 @endforeach
-                
+
               </select>
           </div>
           <div class="mb-3">
@@ -39,7 +39,7 @@
                 @foreach ($payVehicles as $value )
                 <option value="{{$value->id}}">{{$value->vehicle_name}}</option>
                 @endforeach
-                
+
               </select>
           </div>
           <div class="mb-3">
@@ -48,31 +48,31 @@
                   @foreach ($payVehicles as $value )
                   <option value="{{$value->id}}">{{$value->plade_number}}</option>
                   @endforeach
-                  
+
                 </select>
             </div>
-          
+
         </div><!-- col-md-6 end -->
 
       <div class="col-md-6">
-        
+
         <div class="mb-3">
               <label class="form-label">Customer Name</label>
                 <select class="form-control" name="pay_customer_id" required>
                   @foreach ($payCustomers as $value )
                   <option value="{{$value->id}}">{{$value->customer_name}}</option>
                   @endforeach
-                  
+
                 </select>
             </div>
-          
+
           <div class="mb-3">
             <label class="form-label">Driving Licence</label>
               <select class="form-control" name="pay_customer_id" required>
                 @foreach ($payCustomers as $value )
                 <option value="{{$value->id}}">{{$value->driving_licence}}</option>
                 @endforeach
-                
+
               </select>
           </div>
           <div class="mb-3">
@@ -81,7 +81,7 @@
                 @foreach ($payCustomers as $value )
                 <option value="{{$value->id}}">{{$value->customer_phone}}</option>
                 @endforeach
-                
+
               </select>
           </div>
           <div class="mb-3">
@@ -90,7 +90,7 @@
                 @foreach ($payCustomers as $value )
                 <option value="{{$value->id}}">{{$value->customer_address}}</option>
                 @endforeach
-                
+
               </select>
           </div>
           <div class="mb-3">
@@ -99,15 +99,15 @@
                 @foreach ($payTollCharts as $value )
                 <option value="{{$value->id}}">{{$value->toll_price}}</option>
                 @endforeach
-                
+
               </select>
           </div>
       </div>
       <button type="submit" class="btn btn-outline-success">Cash On</button>
-  
+
     </form>
   </div>
   </div>
- </div> 
+ </div>
 
 @endsection

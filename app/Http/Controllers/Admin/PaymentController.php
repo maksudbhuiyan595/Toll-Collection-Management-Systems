@@ -27,7 +27,7 @@ class PaymentController extends Controller
 
 
     //    dd($paymentData);
-    
+
         return view('backend.admin.pages.payments.payIndex', compact('paymentData'));
     }
     public function create()
@@ -42,29 +42,54 @@ class PaymentController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // dd($request->all());
-        $request->validate([
-            'date'              =>'required',
-            'pay_category_id'   => 'required',
-            'pay_vehicle_id'    => 'required',
-            'pay_chart_id'      => 'required',
-            'pay_customer_id'   => 'required',
-            'pay_toll_id'       => 'required',
-        ]);
+{
+    $request->validate([
+        'date'              => 'required',
+        'pay_category_id'   => 'required',
+        'pay_vehicle_id'    => 'required',
+        'pay_chart_id'      => 'required',
+        'pay_customer_id'   => 'required',
+        'pay_toll_id'       => 'required',
+    ]);
 
-        Payment::create([
-            'date'              =>$request->date,
-            'pay_category_id'   =>$request->pay_category_id,
-            'pay_vehicle_id'    =>$request->pay_vehicle_id,
-            'pay_chart_id'      =>$request->pay_chart_id,
-            'pay_customer_id'   =>$request->pay_customer_id,
-            'pay_toll_id'       =>$request->pay_toll_id,
-        ]);
+    $selectedChart = Toll_chart::find($request->pay_chart_id);
+    // Retrieve the toll_price from the selected chart
+    $tollPrice = $selectedChart->toll_price;
 
-        Toastr::success('Successfully Created', 'Payment');
-        return redirect()->back();
-    }
+    // Store payment details in the database
+    $payment = Payment::create([
+        'date'              => $request->date,
+        'pay_category_id'   => $request->pay_category_id,
+        'pay_vehicle_id'    => $request->pay_vehicle_id,
+        'pay_chart_id'      => $request->pay_chart_id,
+        'pay_customer_id'   => $request->pay_customer_id,
+        'pay_toll_id'       => $request->pay_toll_id,
+        'toll_price'        => $tollPrice,
+    ]);
+
+    // Update daily, monthly, and yearly totals
+    $today = now()->format('Y-m-d');
+    $this->updateTotals($payment, $today);
+
+    Toastr::success('Successfully Created', 'Payment');
+    return redirect()->back();
+}
+
+protected function updateTotals($payment, $date)
+{
+    $dailyTotal = Payment::whereDate('created_at', $date)->sum('toll_price');
+
+    $monthlyTotal = Payment::whereYear('created_at', now()->year)
+                            ->whereMonth('created_at', now()->month)
+                            ->sum('toll_price');
+    $yearlyTotal = Payment::whereYear('created_at', now()->year)->sum('toll_price');
+
+    $payment->update([
+        'daily_total'   => $dailyTotal,
+        'monthly_total' => $monthlyTotal,
+        'yearly_total'  => $yearlyTotal,
+    ]);
+}
 
     public function show($id){
 
@@ -74,7 +99,7 @@ class PaymentController extends Controller
 
     }
 
-  
+
 
     public function paymentReport()
     {

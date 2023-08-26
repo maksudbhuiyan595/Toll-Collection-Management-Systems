@@ -21,6 +21,10 @@ return new class extends Migration
             $table->foreignId('pay_chart_id')->constrained('toll_charts')->cascadeOnDelete();
             $table->foreignId('pay_customer_id')->constrained('customers')->cascadeOnDelete();
             $table->foreignId('pay_toll_id')->constrained('tolls')->cascadeOnDelete();
+            $table->decimal('toll_price', 10, 2);
+            $table->decimal('daily_total', 10, 2)->nullable(); // Daily total column
+            $table->decimal('monthly_total', 10, 2)->nullable(); // Monthly total column
+            $table->decimal('yearly_total', 10, 2)->nullable();
             $table->timestamps();
         });
     }

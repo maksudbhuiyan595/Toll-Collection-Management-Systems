@@ -21,6 +21,7 @@ class DashboardController extends Controller
                          ->get();
 
     $totalTollPrice = 0;
+    
 
     foreach ($paymentData as $payment) {
         $paymentDate = $payment->date;

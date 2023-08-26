@@ -21,11 +21,12 @@ class DashboardController extends Controller
                          ->get();
 
     $totalTollPrice = 0;
-    
+
 
     foreach ($paymentData as $payment) {
         $paymentDate = $payment->date;
         $totalTollPrice += $payment->payChart->toll_price;
+        $totalDailyCount += $payment->daily_total; // Add daily_total values
     }
 
     $totalVehicle = Payment::count();
@@ -33,14 +34,19 @@ class DashboardController extends Controller
     $today=Payment::count();
 
     $latestPayment = Payment::latest()->first();
-    $totalDailyCount = $latestPayment->daily_total;
-    $lastUpdatedTimestamp = Payment::latest()->value('created_at');
+
+    $lastUpdatedTimestamp = null; // Initialize with null
+
+    if ($latestPayment) {
+        $totalDailyCount = $latestPayment->daily_total;
+        $lastUpdatedTimestamp = $latestPayment->created_at;
+    }
 
     $latestMonthlyPayment = Payment::latest()->first();
-    $monthlyTotal = $latestMonthlyPayment->monthly_total;
+    $monthlyTotal = $latestMonthlyPayment ? $latestMonthlyPayment->monthly_total : 0;
 
     $latestYearCount = Payment::latest()->first();
-    $yearlyTotal =$latestYearCount->yearly_total;
+    $yearlyTotal = $latestYearCount ? $latestYearCount->yearly_total : 0;
 
 
     return view('backend.admin.pages.dashboard', compact(

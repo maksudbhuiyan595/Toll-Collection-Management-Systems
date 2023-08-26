@@ -48,15 +48,7 @@ class DashboardController extends Controller
         'monthlyTotal',
         'yearlyTotal',
         'totalTollPrice',
-<<<<<<< HEAD
-        'currentDate',
-        'twentyFourHourTotal',
-        'today'
-        
-=======
-        'totalDailyCount',
-        'lastUpdatedTimestamp'
->>>>>>> refs/remotes/origin/main
+
     ));
 }
 

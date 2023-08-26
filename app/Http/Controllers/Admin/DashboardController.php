@@ -10,47 +10,37 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Toll_chart;
 
-class DashboardController extends Controller
-{
-    public function index()
-{
+        class DashboardController extends Controller
+        {
+            public function index()
+        {
 
 
-    // Get payment data with relationships
-    $paymentData = Payment::with(['payCategory', 'payVehicle', 'payChart', 'payCustomer', 'payToll'])
-                         ->get();
+            $paymentData = Payment::with(['payCategory', 'payVehicle', 'payChart', 'payCustomer', 'payToll'])
+            ->get();
 
-    $totalTollPrice = 0;
+        $totalTollPrice = 0;
 
-
-    foreach ($paymentData as $payment) {
-        $paymentDate = $payment->date;
+        foreach ($paymentData as $payment) {
+        if ($payment->payChart) {
         $totalTollPrice += $payment->payChart->toll_price;
+        }
+        }
 
-    }
+        $totalVehicle = Vehicle::count();
+        $totalCategory = Category::count();
 
-    $totalVehicle = Payment::count();
-    $totalCategory = Category::count();
-    $today=Payment::count();
+        $latestPayment = Payment::latest()->first();
+        $totalDailyCount = $latestPayment ? $latestPayment->daily_total : 0;
+        $lastUpdatedTimestamp = $latestPayment ? $latestPayment->created_at : null;
 
-    $latestPayment = Payment::latest()->first();
+        $latestMonthlyPayment = Payment::latest()->first();
+        $monthlyTotal = $latestMonthlyPayment ? $latestMonthlyPayment->monthly_total : 0;
 
-    $lastUpdatedTimestamp = null; // Initialize with null
+        $latestYearCount = Payment::latest()->first();
+        $yearlyTotal = $latestYearCount ? $latestYearCount->yearly_total : 0;
 
-    if ($latestPayment) {
-        $totalDailyCount = $latestPayment->daily_total;
-        $lastUpdatedTimestamp = $latestPayment->created_at;
-    }
-
-    $latestMonthlyPayment = Payment::latest()->first();
-    $monthlyTotal = $latestMonthlyPayment ? $latestMonthlyPayment->monthly_total : 0;
-
-    $latestYearCount = Payment::latest()->first();
-    $yearlyTotal = $latestYearCount ? $latestYearCount->yearly_total : 0;
-
-
-    return view('backend.admin.pages.dashboard', compact(
-
+        return view('backend.admin.pages.dashboard', compact(
         'totalVehicle',
         'totalCategory',
         'monthlyTotal',
@@ -58,9 +48,6 @@ class DashboardController extends Controller
         'totalTollPrice',
         'totalDailyCount',
         'lastUpdatedTimestamp'
-
-    ));
-}
-
-
-}
+        ));
+        }
+        }

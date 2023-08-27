@@ -1,7 +1,5 @@
 @extends('backend.admin.master')
 
-@section('content')
-@extends('backend.admin.master')
 
 @section('content')
 

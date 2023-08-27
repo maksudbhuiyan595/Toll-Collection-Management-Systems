@@ -22,19 +22,12 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6">
-        <div class="card bg-success text-white mb-4">
-            <div class="card-body text-center"><strong style="font-size: 18px;">Today's Vehicle Pass</strong></div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-                <h1 class="">{{ $totalDailyCount }}</h1>
-            </div>
-        </div>
-    </div>
+    
     <div class="col-xl-3 col-md-6">
         <div class="card bg-info text-white mb-4">
             <div class="card-body text-center"><strong style="font-size: 18px;">Total Payment Collection</strong></div>
             <div class="card-footer d-flex align-items-center justify-content-between"><br>
-                <h1 class="small text-white stretched-link"> {{ $totalTollPrice }} Tk.</h1>
+                <h1 class=""> {{ $totalTollPrice }} Tk.</h1>
                 <div class="small text-white"></div>
             </div>
         </div>
@@ -43,7 +36,7 @@
         <div class="card bg-info text-white mb-4">
             <div class="card-body text-center"><strong style="font-size: 18px;">Today's Payment Collection</strong></div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                 <strong class="small text-white stretched-link">{{ $totalDailyCount }} Tk <br>Last updated at: <br>{{ $lastUpdatedTimestamp ? $lastUpdatedTimestamp->diffForHumans() : 'N/A' }}</strong>
+                 <strong class="">{{ $totalDailyCount }} Tk <br>Last updated at: <br>{{ $lastUpdatedTimestamp ? $lastUpdatedTimestamp->diffForHumans() : 'N/A' }}</strong>
                 <div class="small text-white"></div>
             </div>
         </div>

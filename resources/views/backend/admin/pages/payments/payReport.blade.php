@@ -37,10 +37,12 @@
       <th scope="col">#</th>
       <th scope="col">Toll Name</th>
       <th scope="col">Date</th>
-      <th scope="col">Time</th>
       <th scope="col">Customer Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
       <th scope="col">Category</th>
       <th scope="col">Vehicle</th>
+      <th scope="col">driving licence</th>
       <th scope="col">Amounts</th>
     </tr>
   </thead>
@@ -53,10 +55,12 @@
       <th scope="row">{{$loop->iteration}}</th>
       <td>{{$value->payToll->toll_name}}</td>
       <td>{{$value->date}}</td>
-      <td>{{$value->time}}</td>
       <td>{{$value->payCustomer->customer_name}}</td>
+      <td>{{$value->payCustomer->customer_phone}}</td>
+      <td>{{$value->payCustomer->customer_address}}</td>
       <td>{{$value->payCategory->category_name}}</td>
       <td>{{$value->payVehicle->vehicle_name}}</td>
+      <td>{{$value->payCustomer->driving_licence}}</td>
       <td>{{$value->payChart->toll_price}}</td>
      
     </tr>
